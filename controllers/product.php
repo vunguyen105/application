@@ -46,7 +46,7 @@ class product extends Backend_Controller {
 				$data ['start'] = 0;
 				if ($data ['count'] > PERPAGA)
 					$data ['start'] = (($no == ($page - 1) * PERPAGA + 1) && $no == $data ['count'] + 1) ? (($page >= 2) ? (($page - 2) * PERPAGA) : 0) : ($page - 1) * PERPAGA;
-				$data ['products'] = $this->product_m->show ( $data ['start'] );
+                                $data ['products'] = $this->product_m->show ( $data ['start'] );
 				$this->pagination->initialize ( $config );
 				$data ['pagination'] = $this->pagination->create_links ();
 				$ajax = $this->load->view ( 'product/product_ajax_index', $data, true );
@@ -131,31 +131,50 @@ class product extends Backend_Controller {
                 $data['imgs'] = $this->file_m->get_file($id);
 		if($id == null || empty($data['products'])) redirect('product/view');
 		if ($this->input->is_ajax_request ()) {
-			$post = $this->input->post ();
-			$pro = array (
+			$post = $this->input->post ();		
+                        $pro = array (
 					'ProName' => $post ['proname'],
 					'ProPrice' => $post ['price'],
 					'ProQuantity' => $post ['quantity'],
 					'CateID' => $post ['cat'],
-					'ProDesc' => $post ['descr'] 
+					'ProDesc' => $post ['descr'],
+                                        'ProStt' => $post ['stt'],
 			);
+                        if(!empty($post ['imgs'][0]))  $pro['ProPicName'] = $post ['imgs'][0]; 
+                        else $pro['ProPicName'] = 'Images/default.jpg';
 			$rules = $this->product_m->rules;
 			$this->form_validation->set_rules ( $rules );
 			if ($this->form_validation->run () == TRUE) { 
 				$return = $this->product_m->save( $pro, $post['id']);
-				if ($return)
+				 if($return) {
+                                    if (! empty ( $post ['imgs'] ) && is_numeric($return)) {    
+                                        $this->load->model('file_m');
+                                        $this->file_m->delete_by('ProID',$return);
+                                        $image = array ();
+                                        foreach ( $post ['imgs'] as $key => $value ) {
+                                            $img = array (
+                                            'FileName' => $value,
+                                            'ProID' => $return
+                                            );
+                                            $image [] = $img;
+                                        }
+                                        $this->file_m->save ( $image, FALSE, TRUE );
+//                                        
 					echo json_encode ( array (
 							'msg' => 'Cập nhật sản phẩm thành công' 
 					) );
-				die ();
-			} else {
-				echo json_encode ( array (
-						'msg' => 'chưa nhập dữ liệu nhập vào hoặc nhập sai dữ liệu' 
-				) );
-				die ();
+                                        die;
+                                    }
+                                }
+                        }else {
+                                        echo json_encode ( array (
+                                                        'msg' => 'chưa nhập dữ liệu nhập vào hoặc nhập sai dữ liệu' ,
+                                                        'error' => validation_errors_array()
+                                        ) );
+                                        die;
 			}
 		} else {
-			$this->template->add_title ( 'Product edit' );
+			$this->template->add_title ( 'Sửa sản phẩm' );
 			$this->template->write ( 'title', '' );
 			$this->template->write ( 'desption', 'Product edit' );
 			$this->load->helper ( array ('url','editor_helper') );

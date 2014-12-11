@@ -182,20 +182,20 @@ a, a:hover, a:link, a:active, a:focus {
         var length = foder.length + file.length + 1;
         var link = fileUrl.substring(0, fileUrl.length - length) + '_thumbs/' + fileUrl.substring(fileUrl.length - length, fileUrl.length);
         var html = '<li class="image isotope-item">';
-        html += '<a href = "' + link + '" data-link = "' + foder + '/' + file + '"  class = "cboxElement">';
+        html += '<a href = ""  class = "cboxElement">';
         html += '<img alt = ""src = "' + link + '"></a>';
-        html += '<span class = "filename">' + filename_edit(file) + '<a class="icon-trash"></a></li>';
+        html += '<span class = "filename"><a class="icon-trash"></a></span></li>';
         $('#imges').append(html);
         return false;
     }
     
-    function filename_edit(filename) {
-        if(filename.length > 10) {
-            var filename = filename.substring(0, 6);
-            filename += '.jpg';
-        }    
-        return filename;
-    }
+//    function filename_edit(filename) {
+//        if(filename.length > 10) {
+//            var filename = filename.substring(0, 6);
+//            filename += '.jpg';
+//        }    
+//        return filename;
+//    }
 </script>
 <script type="text/javascript"
 	src="<?php echo site_url() ?>/index.php/ckfinder/ckfinder_v1.js"></script>
@@ -214,8 +214,6 @@ a, a:hover, a:link, a:active, a:focus {
                 var cat = $("#cat").val();
                 var objEditor = CKEDITOR.instances["demo"];
                 var descr = objEditor.getData();
-                
-                //alert(descr);
                  var array_anh = [];
                  $('#imges').each(function() {
                      var link = '';

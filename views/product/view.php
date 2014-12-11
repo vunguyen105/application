@@ -82,8 +82,19 @@ jQuery(document).on('click', 'table#table_product span.icon-trash', function() {
                 beforeSend: function() {
                 },
                 success: function(data) {
+                        BootstrapDialog.show({
+                            title: 'Thông báo',
+                            message: 'Xóa thành công',
+                            buttons: [{
+                                    label: 'OK',
+                                    cssClass: 'btn-primary',
+                                    hotkey: 13, // Enter.
+                                    action: function() {
+                                        BootstrapDialog.closeAll();
+                                        }
+                                }]
+                        });
                 	$("#content").html(data);
-                	applyPagination();
                 }
             });
         } else {
@@ -102,62 +113,6 @@ jQuery(document).on('click', 'table#table_product span.icon-trash', function() {
     	);
 
     	
-    });
-
-    jQuery(document).on('click', '#create_user', function() { 
-        var text = '<form action="<?php echo base_url() ?>dashboard/create_user" method="post" id="form_create_user" class="">';
-        var that = $(this).parent().parent();
-        text += '<div class="controls">'
-        text += '<label class="control-label">Tài khoản</label>';
-        text += '<input type="text" name="username" class="m-wrap large" placeholder="Tài khoản">'
-        text += '<label class="control-label">Mật khẩu</label>';
-        text += '<input type="password" name="password" class="m-wrap large" placeholder="Mật khẩu">'
-        text += '<label class="control-label">Họ</label>';
-        text += '<input type="text" name="firstname" class="m-wrap large" placeholder="Họ">'
-        text += '<label class="control-label">Tên</label>';
-        text += '<input type="text" name="lastname" class="m-wrap large" placeholder="Tên">'
-        text += '<label class="control-label">Email</label>';
-        text += '<input type="text" name="email" class="m-wrap large" placeholder="email">'
-        text += '<label class="control-label">Địa chỉ</label>';
-        text += '<input type="text" name="address" class="m-wrap large" placeholder="Địa chỉ">'
-        text += '</div>'
-        text += '</form>'
-        BootstrapDialog.show({
-            title: 'Tạo tài khoản mới',
-            message: $(text),
-            buttons: [{
-                    label: 'Create',
-                    cssClass: 'btn green',
-                    hotkey: 13, // Enter.
-                    action: function() {
-                        //                        var user = $('input#user.m-wrap ').val();
-                        //                        var lastname = $('input#lastname.m-wrap ').val();
-                        //                        var firstname = $('input#user.m-wrap ').val();
-                        //                        var name = $('input#user.m-wrap ').val();
-                        //                        alert(name);
-                        var form2 = $('form#form_create_user');
-                        $.ajax({
-                            type: "POST",
-                            data: form2.serialize(),
-                            url: form2.attr('action'),
-                            dataType: 'json',
-                            beforeSend: function() {
-                            },
-                            success: function(data) { 
-                                if (data.stt == true)
-                                {
-
-                                    BootstrapDialog.closeAll();
-                                    alert('bạn đã tạo tài khoản thành công');
-                                }
-                                else {
-                                    alert('bạn đã tạo tài khoản ko thành công');
-                                }
-                            },
-                        });
-                    }
-                }]
-        });
     });
     function applyPagination() {
         $("#ajax_paging a").click(function() {

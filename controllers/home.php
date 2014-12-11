@@ -37,7 +37,29 @@ class home extends CI_Controller {
     }
 
     public function signup() {
-        $this->customer_m->loggedin() == FALSE || redirect('home/product');
+        $product = 'home/login';
+        $this->load->model('customer_m');
+        $this->customer_m->loggedin() == FALSE || redirect($product);
+        $rules = $this->customer_m->rules;
+        $this->form_validation->set_rules($rules);
+
+        // Process form
+        if ($this->form_validation->run() == TRUE) {
+            $post = $this->input->post ();
+			$cus = array (
+					'CusUser' => $post ['CusUser'],
+					'CusEmail' => $post ['CusEmail'],
+					'CusAdd' => $post ['CusAdd'],
+                                        'CusName' => $post ['CusName'],
+                                        'CusPhone' => $post ['CusPhone'],
+                                        'CusPass' => md5($post ['CusPass']),
+			);
+                        $return = $this->customer_m->save( $cus);
+                        $this->session->set_flashdata('success', 'Đăng nhập thành công');
+                        redirect($product);
+        }  else {
+            
+        }
         $data['content'] = $this->load->view('frontend/signup', '', true);
         $this->load->view('frontend/layout', $data);
     }

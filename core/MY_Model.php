@@ -263,7 +263,7 @@ class MY_Model extends CI_Model {
      * @return void
      * @author Joost van Veen
      */
-    public function delete_by($key, $value = FALSE, $orwhere = FALSE) {
+    public function delete_by($key, $val = FALSE, $orwhere = FALSE) {
 
         if (empty($key)) {
             return FALSE;

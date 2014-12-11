@@ -1,21 +1,21 @@
 <?php
-class news extends Backend_Controller {
+class slide extends Backend_Controller {
 	function __construct() {
 		parent::__construct ();
-		$this->load->model ( 'news_m' );
+		$this->load->model ( 'slide_m' );
 		$this->load->library ( 'pagination' );
 	}
 	public function view() {
-		$this->template->add_title ( 'Thống kê tin tức' );
-		$this->template->write ( 'title', 'Thống kê tin tức' );
-		$this->template->write ( 'desption', 'Thống kê tin tức' );
-		$config ['base_url'] = base_url () . "news/view?";
+		$this->template->add_title ( 'Thống kê Slide' );
+		$this->template->write ( 'title', 'Thống kê Slide' );
+		$this->template->write ( 'desption', 'Thống kê Slide' );
+		$config ['base_url'] = base_url () . "slide/view?";
 		$config ['per_page'] = PERPAGA;
 		if ($this->input->is_ajax_request ()) {
 			$data ['start'] = ($this->input->get ( 'page' ) == FALSE) ? 0 : ( int ) $this->input->get ( 'page' );
 			$data ['count'] = $config ['total_rows'] = $this->news_m->get ( FALSE, TRUE );
 			$this->news_m->set_start($data['start']);
-                        $data['news'] = $this->news_m->get();
+                        $data['slides'] = $this->news_m->get();
 			$this->pagination->initialize ( $config );
 			$data ['pagination'] = $this->pagination->create_links ();
 			$ajax = $this->load->view ( 'news/news_ajax_index', $data, true );

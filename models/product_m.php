@@ -11,22 +11,22 @@ class product_m extends MY_Model {
 			),
 			'price' => array (
 					'field' => 'price',
-					'label' => 'Giá',
-					'rules' => 'trim|required|xss_clean|integer' 
+					'label' => 'Số lượng',
+					'rules' => 'trim|required|xss_clean' 
 			),
 			'quantity' => array (
 					'field' => 'quantity',
-					'label' => 'quantity',
-					'rules' => 'trim|required|integer|xss_clean' 
+					'label' => 'Giá',
+					'rules' => 'trim|required|is_natural' 
 			),
 			'cat' => array (
 					'field' => 'cat',
-					'label' => 'category',
-					'rules' => 'trim|required|integer|xss_clean' 
+					'label' => 'Thư mục',
+					'rules' => 'trim|required|xss_clean' 
 			),
 			'descr' => array (
 					'field' => 'descr',
-					'label' => 'descr',
+					'label' => 'Thông số',
 					'rules' => 'required' 
 			) 
 	);
