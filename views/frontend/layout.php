@@ -33,6 +33,10 @@
             color: red;
             margin: 4px;
         }
+        .success{
+            color: blue;
+            margin: 4px;
+        }
     </style>
 </head><!--/head-->
 
@@ -98,15 +102,17 @@
 					<div class="col-sm-8">
 						<div class="shop-menu pull-right">
 							<ul class="nav navbar-nav">
-								<li><a href=""><i class="fa fa-user"></i> Account</a></li>
-								<li><a href=""><i class="fa fa-star"></i> Wishlist</a></li>
+								<?php if(is_login_front()) {?>
+                                                                <li><a href=""><i class="fa fa-user"></i><?php echo $this->session->userdata('CusName');?></a></li>
+                                                                <?php }?>
+                                                                <li><a href=""><i class="fa fa-star"></i> Wishlist</a></li>
 								<li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
 								<li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
 								<?php if(!is_login_front()) {?>
-                                                                <li><a href="<?php echo base_url(); ?>home/login" class=""><i class="fa fa-lock"></i> Login</a></li>
+                                                                <li><a href="<?php echo base_url(); ?>home/login" class=""><i class="fa fa-lock"></i> Đăng Nhập</a></li>
                                                                 <?php }
                                                                 else {?>
-                                                                 <li><a href="<?php echo base_url(); ?>home/logout" class=""><i class="fa fa-lock"></i> Logout</a></li>    
+                                                                 <li><a href="<?php echo base_url(); ?>home/logout" class=""><i class="fa fa-lock"></i> Đăng Xuất</a></li>    
                                                                 <?php }?>
                                                         </ul>
 						</div>

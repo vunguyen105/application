@@ -29,7 +29,7 @@ class home extends CI_Controller {
                 redirect($product);
             } else {
                 $this->session->set_flashdata('error', 'Tài khoản hoặc mật khẩu không hợp lệ');
-                redirect('home/login', 'refresh');
+                redirect('home/login');
             }
         }
         $data['content'] = $this->load->view('frontend/log_in', '', true);
@@ -55,11 +55,9 @@ class home extends CI_Controller {
                                         'CusPass' => md5($post ['CusPass']),
 			);
                         $return = $this->customer_m->save( $cus);
-                        $this->session->set_flashdata('success', 'Đăng nhập thành công');
+                        $this->session->set_flashdata('success', 'Đăng Ký thành công');
                         redirect($product);
-        }  else {
-            
-        }
+        } 
         $data['content'] = $this->load->view('frontend/signup', '', true);
         $this->load->view('frontend/layout', $data);
     }
