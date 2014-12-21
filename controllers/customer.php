@@ -105,7 +105,7 @@ class customer extends Backend_Controller {
 			$rules = $this->customer_m->rules;
 			$this->form_validation->set_rules ( $rules );
 			if ($this->form_validation->run () == TRUE) { 
-				$return = $this->customer_m->savesave( $pro, $post['id']);
+				$return = $this->customer_m->save( $pro, $post['id']);
 				if($return)
 					echo json_encode ( array (
 							'msg' => 'Sửa thông tin tài khoản thành công' 
