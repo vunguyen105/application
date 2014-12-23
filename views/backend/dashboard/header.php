@@ -14,7 +14,7 @@
 				<!-- BEGIN TOP NAVIGATION MENU -->              
 				<ul class="nav pull-right">
 					<!-- BEGIN NOTIFICATION DROPDOWN -->   
-				<!--	<li class="dropdown" id="header_notification_bar">
+					<li class="dropdown" id="header_notification_bar">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
 						<i class="icon-warning-sign"></i>
 						<span class="badge">6</span>
@@ -100,7 +100,7 @@
 					
 					<!-- END INBOX DROPDOWN -->
 					<!-- BEGIN TODO DROPDOWN -->
-					<!--<li class="dropdown" id="header_task_bar">
+					<li class="dropdown" id="header_task_bar">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
 						<i class="icon-tasks"></i>
 						<span class="badge">5</span>
@@ -197,23 +197,25 @@
 					</li>-->
 					<!-- END TODO DROPDOWN -->               
 					<!-- BEGIN USER LOGIN DROPDOWN -->
-					<li class="dropdown user">
+					<?php if(is_login()) {?>
+                                        <li class="dropdown user">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
 						
-						<span class="username"><?php ?></span>
+						<span class="username"><?php echo strtoupper($this->session->userdata['UserName']);?></span>
 						<i class="icon-angle-down"></i>
 						</a>
 						<ul class="dropdown-menu">
-<!-- 							<li><a href="extra_profile.html"><i class="icon-user"></i> My Profile</a></li> -->
-<!-- 							<li><a href="page_calendar.html"><i class="icon-calendar"></i> My Calendar</a></li> -->
-<!-- 							<li><a href="inbox.html"><i class="icon-envelope"></i> My Inbox <span class="badge badge-important">3</span></a></li> -->
-<!-- 							<li><a href="#"><i class="icon-tasks"></i> My Tasks <span class="badge badge-success">8</span></a></li> -->
-<!-- 							<li class="divider"></li> -->
-<!-- 							<li><a href="javascript:;" id="trigger_fullscreen"><i class="icon-move"></i> Full Screen</a></li> -->
-<!-- 							<li><a href="extra_lock.html"><i class="icon-lock"></i> Lock Screen</a></li> -->
-							<li><a href="<?php echo base_url()?>backend/logout"><i class="icon-key"></i> Log Out</a></li>
+ 							<li><a href="extra_profile.html"><i class="icon-user"></i> My Profile</a></li> 
+ 							<li><a href="page_calendar.html"><i class="icon-calendar"></i> My Calendar</a></li> 
+ 							<li><a href="inbox.html"><i class="icon-envelope"></i> My Inbox <span class="badge badge-important">3</span></a></li> 
+ 							<li><a href="#"><i class="icon-tasks"></i> My Tasks <span class="badge badge-success">8</span></a></li> 
+ 							<li class="divider"></li> 
+ 							<li><a href="javascript:;" id="trigger_fullscreen"><i class="icon-move"></i> Full Screen</a></li> 
+ 							<li><a href="extra_lock.html"><i class="icon-lock"></i> Lock Screen</a></li> <!--
+-->							<li><a href="<?php echo base_url()?>backend/logout"><i class="icon-key"></i> Log Out</a></li>
 						</ul>
 					</li>
+                                        <?php }?>
 					<!-- END USER LOGIN DROPDOWN -->
 					<!-- END USER LOGIN DROPDOWN -->
 				</ul>

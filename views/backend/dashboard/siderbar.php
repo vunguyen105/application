@@ -28,23 +28,30 @@
                 <i class="icon-briefcase"></i> 
                 <span class="title">Sản phẩm</span>
                 <span class="selected"></span>
-                <span class="arrow open"></span>
+                <span class="arrow"></span>
             </a>
             <ul class="sub-menu">
                 <li >
-                    <a href="<?php echo base_url() ?>product/product_create">
-                        Tạo mới</a>
+                    <a href="<?php echo base_url() ?>product/view">
+                        Danh sách sản phẩm</a>
                 </li>
                 <li >
-                    <a href="<?php echo base_url() ?>product/view">
-                        Danh sách</a>
+                    <a href="<?php echo base_url() ?>product/product_create">
+                        Thêm sản phẩm</a>
                 </li>
-
+                <li >
+                    <a href="<?php echo base_url() ?>size/view">
+                        Kích thước</a>
+                </li>
+                <li > 
+                    <a href="<?php echo base_url() ?>size/add"> 
+                        Thêm kích thước</a> 
+                </li> 
             </ul> 
         </li>
         <li >
             <a href="<?php echo base_url() ?>category/view">
-                <i class="icon-folder-open"></i> 
+                <i class="icon-folder"></i> 
                 <span class="title">Thư mục</span>
 
             </a>
@@ -59,9 +66,34 @@
         <li class=" ">
             <a href="<?php echo base_url() ?>product/view">
                 <i class="icon-briefcase"></i> 
-                <span class="title">Bài viết</span>
+                <span class="title">Thành viên</span>
                 <span class="selected"></span>
-                <span class="arrow open"></span>
+                <span class="arrow"></span>
+            </a>
+            <ul class="sub-menu">
+                <li >
+                    <a href="<?php echo base_url() ?>news/news_create">
+                        Danh sách thành viên</a>
+                </li>
+                <li >
+                    <a href="<?php echo base_url() ?>news/view">
+                        Thêm thành viên</a>
+                </li>
+                <li >
+                    <a href="<?php echo base_url() ?>news/view">
+                        Thông tin phản hồi</a>
+                </li>
+                <li >
+                    <a href="<?php echo base_url() ?>news/view">
+                        Đánh giá sản phẩm</a>
+                </li>
+            </ul> 
+        </li>
+        <li class=" ">
+            <a href="<?php echo base_url() ?>product/view">
+                <i class="icon-user"></i> 
+                <span class="title">Bài viết</span>
+                <span class="arrow"></span>
             </a>
             <ul class="sub-menu">
                 <li >
@@ -77,18 +109,30 @@
         </li>
         <li >
             <a href="javascript:;">
-                <i class="icon-user"></i> 
-                <span class="title">Tài khoản</span>
-                <span class="arrow "></span>
+                <i class="icon-briefcase"></i> 
+                <span class="title">Hóa đơn</span>
+                <span class="arrow"></span>
             </a>
             <ul class="sub-menu">
                 <li > 
                     <a href="<?php echo base_url() ?>customer/create"> 
-                        Tạo mới</a> 
+                        Danh sách hóa đơn</a> 
                 </li> 
                 <li >
                     <a href="<?php echo base_url() ?>customer/view">
-                        Danh sách </a>
+                        Hóa đơn chờ xử lý </a>
+                </li>
+                <li >
+                    <a href="<?php echo base_url() ?>customer/view">
+                        Hóa đơn đang xử lý </a>
+                </li>
+                <li >
+                    <a href="<?php echo base_url() ?>customer/view">
+                        Hóa đơn đã xử lý </a>
+                </li>
+                <li >
+                    <a href="<?php echo base_url() ?>customer/view">
+                        Phương thức thanh toán </a>
                 </li>
 
             </ul>
@@ -96,18 +140,15 @@
         <li >
             <a href="javascript:;">
                 <i class="icon-user"></i> 
-                <span class="title">Kích thước sản phẩm</span>
+                <span class="title">Báo cáo thống kê</span>
                 <span class="arrow "></span>
             </a>
             <ul class="sub-menu">
                 <li >
                     <a href="<?php echo base_url() ?>size/view">
-                        Danh sách</a>
+                        Lượng người truy cập</a>
                 </li>
-                <li > 
-                    <a href="<?php echo base_url() ?>size/add"> 
-                        Tạo mới</a> 
-                </li> 
+                
 
             </ul>
         </li>

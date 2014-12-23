@@ -132,14 +132,13 @@
                             <ul class="breadcrumb">
                                 <li>
                                     <i class="icon-home"></i>
-                                    <a href="index.html">Home</a> 
+                                    <a href="<?php echo base_url().$this->uri->segment(1)?>"><?php echo strtoupper($this->uri->segment(1))?></a> 
                                     <i class="icon-angle-right"></i>
                                 </li>
                                 <li>
-                                    <a href="#">Layouts</a>
-                                    <i class="icon-angle-right"></i>
+                                    <a href="<?php echo base_url().$this->uri->segment(1)."/".$this->uri->segment(2)?>"><?php echo strtoupper($this->uri->segment(2))?></a>
+                                    <i class="icon-angle"></i>
                                 </li>
-                                <li><a href="#">Blank Page</a></li>
                             </ul>
                             <!-- END PAGE TITLE & BREADCRUMB-->
                         </div>

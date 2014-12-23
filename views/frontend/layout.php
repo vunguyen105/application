@@ -48,8 +48,8 @@
 					<div class="col-sm-6">
 						<div class="contactinfo">
 							<ul class="nav nav-pills">
-								<li><a href=""><i class="fa fa-phone"></i> +2 95 01 88 821</a></li>
-								<li><a href=""><i class="fa fa-envelope"></i> info@domain.com</a></li>
+								<li><a href=""><i class="fa fa-phone"></i> +84 1674650860</a></li>
+								<li><a href=""><i class="fa fa-envelope"></i> vunguyen105@gmail.com</a></li>
 							</ul>
 						</div>
 					</div>
@@ -105,9 +105,9 @@
 								<?php if(is_login_front()) {?>
                                                                 <li><a href=""><i class="fa fa-user"></i><?php echo $this->session->userdata('CusName');?></a></li>
                                                                 <?php }?>
-                                                                <li><a href=""><i class="fa fa-star"></i> Wishlist</a></li>
-								<li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-								<li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+                                                                <li><a href=""><i class="fa fa-star"></i>Yêu thích</a></li>
+								<li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Thanh Toán</a></li>
+								<li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Giỏ hàng</a></li>
 								<?php if(!is_login_front()) {?>
                                                                 <li><a href="<?php echo base_url(); ?>home/login" class=""><i class="fa fa-lock"></i> Đăng Nhập</a></li>
                                                                 <?php }
@@ -135,17 +135,17 @@
 						</div>
 						<div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
-								<li><a href="index.html">Home</a></li>
-								<li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
+								<li><a href="<?php echo base_url(); ?>home/">Trang chủ</a></li>
+								<li class="dropdown"><a href="#">Sản phẩm<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
-                                        <li><a href="<?php echo base_url(); ?>home/product">Products</a></li>
+                                        <li><a href="<?php echo base_url(); ?>home/product">Sản phẩm</a></li>
                                         <li><a href="product-details.html">Product Details</a></li> 
                                         <li><a href="checkout.html">Checkout</a></li> 
                                         <li><a href="cart.html">Cart</a></li> 
                                     </ul>
                                 </li>
-                                                <li><a href="<?php echo base_url(); ?>home/blog">Blog</a></li>
-								<li><a href="<?php echo base_url(); ?>home/contact">Contact</a></li>
+                                                <li><a href="<?php echo base_url(); ?>home/blog">Tin Tức</a></li>
+								<li><a href="<?php echo base_url(); ?>home/contact">Liên Hệ</a></li>
 							</ul>
 						</div>
 					</div>
