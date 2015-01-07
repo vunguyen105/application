@@ -39,5 +39,12 @@ class product_m extends MY_Model {
 		$this->db->join ( 'Categories', 'Product.CateID = Categories.id', 'left' );
 		return $this->get ();
 	}
+        
+        public function product_get_cat($IDCat, $ids = FALSE, $single = FALSE) {
+		$this->db->select ( 'ProID, ProPicName, CateID, ProName, ProPrice, ProStt, ProQuantity,  ProDesc, ProStt2, Categories.name as CateName' );
+		$this->db->join ( 'Categories', 'Product.CateID = Categories.id', 'left' );
+                $this->db->where('Product.CateID',$IDCat);
+		return $this->get ($ids, $single);
+	}
 }
 ?>

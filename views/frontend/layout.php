@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Product Details | E-Shopper</title>
+    <title>Trang chủ</title>
     <link href="<?php echo base_url(); ?>public/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>public/css/font-awesome.min.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>public/css/prettyPhoto.css" rel="stylesheet">
@@ -13,21 +13,13 @@
     <link href="<?php echo base_url(); ?>public/css/animate.css" rel="stylesheet">
 	<link href="<?php echo base_url(); ?>public/css/main.css" rel="stylesheet">
 	<link href="<?php echo base_url(); ?>public/css/responsive.css" rel="stylesheet">
-    <!--[if lt IE 9]>
-    <script src="js/html5shiv.js"></script>
-    <script src="js/respond.min.js"></script>
-    <![endif]-->       
+           
     <link rel="shortcut icon" href="i<?php echo base_url(); ?>public/mages/ico/favicon.ico">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?php echo base_url(); ?>public/images/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo base_url(); ?>public/images/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo base_url(); ?>public/images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="<?php echo base_url(); ?>public/images/ico/apple-touch-icon-57-precomposed.png">
     <script src="<?php echo base_url(); ?>public/js/jquery.js"></script>
-    <script src="<?php echo base_url(); ?>public/js/price-range.js"></script>
-    <script src="<?php echo base_url(); ?>public/js/jquery.scrollUp.min.js"></script>
-    <script src="<?php echo base_url(); ?>public/js/bootstrap.min.js"></script>
-    <script src="<?php echo base_url(); ?>public/js/jquery.prettyPhoto.js"></script>
-    <script src="<?php echo base_url(); ?>public/js/main.js"></script>
     <style type="text/css">
         .alert-error{
             color: red;
@@ -73,7 +65,7 @@
 				<div class="row">
 					<div class="col-sm-4">
 						<div class="logo pull-left">
-							<a href="index.html"><img src="images/home/logo.png" alt="" /></a>
+							<a href=""><img src="images/home/logo.png" alt="" /></a>
 						</div>
 						<div class="btn-group pull-right">
 							<div class="btn-group">
@@ -105,9 +97,8 @@
 								<?php if(is_login_front()) {?>
                                                                 <li><a href=""><i class="fa fa-user"></i><?php echo $this->session->userdata('CusName');?></a></li>
                                                                 <?php }?>
-                                                                <li><a href=""><i class="fa fa-star"></i>Yêu thích</a></li>
-								<li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Thanh Toán</a></li>
-								<li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Giỏ hàng</a></li>
+								<li><a href="<?php echo base_url(); ?>home/checkout"><i class="fa fa-crosshairs"></i> Thanh Toán</a></li>
+								<li><a href="<?php echo base_url(); ?>home/cart"><i class="fa fa-shopping-cart"></i>[<?php echo $this->cart->total_items();?>] Giỏ hàng</a></li>
 								<?php if(!is_login_front()) {?>
                                                                 <li><a href="<?php echo base_url(); ?>home/login" class=""><i class="fa fa-lock"></i> Đăng Nhập</a></li>
                                                                 <?php }
@@ -138,10 +129,9 @@
 								<li><a href="<?php echo base_url(); ?>home/">Trang chủ</a></li>
 								<li class="dropdown"><a href="#">Sản phẩm<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
-                                        <li><a href="<?php echo base_url(); ?>home/product">Sản phẩm</a></li>
-                                        <li><a href="product-details.html">Product Details</a></li> 
-                                        <li><a href="checkout.html">Checkout</a></li> 
-                                        <li><a href="cart.html">Cart</a></li> 
+                                        <li><a href="<?php echo base_url(); ?>home/product">Sản phẩm</a></li> 
+                                        <li><a href="<?php echo base_url(); ?>home/checkout">Checkout</a></li> 
+                                        <li><a href="<?php echo base_url(); ?>home/cart">Cart</a></li> 
                                     </ul>
                                 </li>
                                                 <li><a href="<?php echo base_url(); ?>home/blog">Tin Tức</a></li>
@@ -160,7 +150,19 @@
 	</header><!--/header-->
 	
         <?php if(!empty($slider)) echo $slider;?>
-	<?php if(!empty($content)) echo $content;?>
+        <section>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-3">
+					<?php if(!empty($left)) echo $left;?>
+				</div>
+				
+			<?php if(!empty($content)) echo $content;?>	
+			</div>
+		</div>
+	</section>
+
+	
 	
 	
 	<footer id="footer"><!--Footer-->
@@ -320,11 +322,57 @@
 		</div>
 		
 	</footer><!--/Footer-->
-        <script src="<?php echo base_url(); ?>public/js/jquery.js"></script>
+       
 	<script src="<?php echo base_url(); ?>public/js/bootstrap.min.js"></script>
 	<script src="<?php echo base_url(); ?>public/js/jquery.scrollUp.min.js"></script>
 	<script src="<?php echo base_url(); ?>public/js/price-range.js"></script>
     <script src="<?php echo base_url(); ?>public/js/jquery.prettyPhoto.js"></script>
     <script src="<?php echo base_url(); ?>public/js/main.js"></script>
+    <script src="<?php echo base_url(); ?>assets/dialog/run_prettify.js"></script>
+    <link href="<?php echo base_url(); ?>assets/dialog/bootstrap-dialog.css" rel="stylesheet" type="text/css" />
+    <script src="<?php echo base_url(); ?>assets/dialog/bootstrap-dialog.js"></script>
+    <script>
+        jQuery(document).on('click', '.add-to-cart', function() {
+            var that = $(this);
+            BootstrapDialog.confirm('Thông báo', 'Bạn muốn thêm sản phẩm này vào giỏ hàng', function(result) {
+            if (result) {
+            	var proname = that.attr("data-name");
+                var proid = that.attr("data-id");
+                var proprice = that.attr("data-price");
+                var propic = that.attr("data-pic");
+                $.ajax({
+                    type: "POST",
+                    data: {
+                        proid:proid,
+                    	proname: proname,
+                        proprice: proprice,
+                        propic: propic,
+                        quantity: 1,
+                    },
+                    dataType: 'json',
+                    url: '<?php echo base_url()?>home/shopping',
+                    beforeSend: function() {
+                    },
+                    success: function(data) { 
+                        
+                        BootstrapDialog.show({
+                            title: 'Thông báo',
+                            message: data.msg,
+                            buttons: [{
+                                    label: 'OK',
+                                    cssClass: 'btn green',
+                                    hotkey: 13, // Enter.
+                                    action: function() {
+                                        BootstrapDialog.closeAll();
+                                    }
+                                }]
+                        });
+                    }
+                });
+            }
+        });
+        return false;
+    	});
+    </script>  
 </body>
 </html>

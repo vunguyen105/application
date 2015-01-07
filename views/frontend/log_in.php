@@ -23,7 +23,7 @@
 								<input type="checkbox" class="checkbox"> 
 								Ghi nhớ mật khẩu
 							</span>
-							<button id='login' type="submit" class="btn btn-default">Login</button>
+							<button id='login' type="submit" class="btn btn-default">Đăng nhập</button>
 						</form>
 					</div><!--/login form-->
                                         <div class="alert-error">

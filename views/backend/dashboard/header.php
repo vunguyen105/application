@@ -14,7 +14,7 @@
 				<!-- BEGIN TOP NAVIGATION MENU -->              
 				<ul class="nav pull-right">
 					<!-- BEGIN NOTIFICATION DROPDOWN -->   
-					<li class="dropdown" id="header_notification_bar">
+<!--					<li class="dropdown" id="header_notification_bar">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
 						<i class="icon-warning-sign"></i>
 						<span class="badge">6</span>
@@ -94,13 +94,13 @@
 								<a href="#">See all notifications <i class="m-icon-swapright"></i></a>
 							</li>
 						</ul>
-					</li>
+					</li>-->
 					<!-- END NOTIFICATION DROPDOWN -->
 					<!-- BEGIN INBOX DROPDOWN -->
 					
 					<!-- END INBOX DROPDOWN -->
 					<!-- BEGIN TODO DROPDOWN -->
-					<li class="dropdown" id="header_task_bar">
+<!--					<li class="dropdown" id="header_task_bar">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
 						<i class="icon-tasks"></i>
 						<span class="badge">5</span>
@@ -194,7 +194,7 @@
 								<a href="#">See all tasks <i class="m-icon-swapright"></i></a>
 							</li>
 						</ul>
-					</li>-->
+					</li>-->-->
 					<!-- END TODO DROPDOWN -->               
 					<!-- BEGIN USER LOGIN DROPDOWN -->
 					<?php if(is_login()) {?>

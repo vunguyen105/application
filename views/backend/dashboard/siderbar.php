@@ -28,7 +28,7 @@
                 <i class="icon-briefcase"></i> 
                 <span class="title">Sản phẩm</span>
                 <span class="selected"></span>
-                <span class="arrow"></span>
+                <span class="arrow open"></span>
             </a>
             <ul class="sub-menu">
                 <li >
@@ -68,7 +68,7 @@
                 <i class="icon-briefcase"></i> 
                 <span class="title">Thành viên</span>
                 <span class="selected"></span>
-                <span class="arrow"></span>
+                <span class="arrow open"></span>
             </a>
             <ul class="sub-menu">
                 <li >
@@ -93,7 +93,7 @@
             <a href="<?php echo base_url() ?>product/view">
                 <i class="icon-user"></i> 
                 <span class="title">Bài viết</span>
-                <span class="arrow"></span>
+                <span class="arrow open"></span>
             </a>
             <ul class="sub-menu">
                 <li >
@@ -107,11 +107,11 @@
 
             </ul> 
         </li>
-        <li >
+<!--        <li >
             <a href="javascript:;">
                 <i class="icon-briefcase"></i> 
                 <span class="title">Hóa đơn</span>
-                <span class="arrow"></span>
+                <span class="arrow open"></span>
             </a>
             <ul class="sub-menu">
                 <li > 
@@ -136,12 +136,12 @@
                 </li>
 
             </ul>
-        </li>
+        </li>-->
         <li >
             <a href="javascript:;">
                 <i class="icon-user"></i> 
                 <span class="title">Báo cáo thống kê</span>
-                <span class="arrow "></span>
+                <span class="arrow open "></span>
             </a>
             <ul class="sub-menu">
                 <li >
@@ -155,3 +155,6 @@
     </ul>
     <!-- END SIDEBAR MENU -->
 </div>
+<script>
+    $('ul.sub-menu').css("display","block");
+</script>    

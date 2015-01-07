@@ -1305,9 +1305,9 @@ class Nested_set {
                         $retVal .= '<div class="panel panel-default" menu-id="' . $IDMenu . '">';
                         $retVal .= '<div class="panel-heading">';
                         $retVal .= '<h4 class="panel-title">';
-                        $retVal .= '<a data-toggle="collapse" data-parent="#accordian" href="#'.stripUnicode_slug($v['name']).'">';
+                        $retVal .= '<a href="'.base_url().'home/category/'.$v['CateID'].'">';
                         if (isset($menuData['parents'][$v['CateID']])) {
-                        $retVal .= '<span class="badge pull-right"><i class="fa fa-plus"></i></span>';
+                        $retVal .= '<span class="badge pull-right"><i class=""></i></span>';
                         }
                         $retVal .= $v['name'];
                         $retVal .= '</a>';
@@ -1327,14 +1327,14 @@ class Nested_set {
     	$retVal = ''; 
     	is_array($array) || $notID = array($array);
     	if (isset($menuData['parents'][$parentId])) {
-    		$retVal .= '<div id="'.stripUnicode_slug($name).'" class="panel-collapse collapse">';
+    		$retVal .= '<div id="'.stripUnicode_slug($name).'" class="panel-collapse in">';
 		$retVal .= '<div class="panel-body">';
                 $retVal .= '<ul>';
     		foreach ($menuData['parents'][$parentId] as $itemId) {
     			if(in_array($itemId, $array)) continue;
     			//$retVal .= '<li class="' . $class['li'] . '" ' . 'data-lft="' . $menuData['items'][$itemId]['lft'] . '"' . 'data-rgt="' . $menuData['items'][$itemId]['rgt'] . '"' . 'data-id="' . $menuData['items'][$itemId]['id'] . '">';
     			//$retVal .= '<span style="float: right">';
-                        $retVal .= '<li><a href="#">'.$menuData['items'][$itemId][$this->text_column_name].'</a></li>';
+                        $retVal .= '<li><a href="'.  base_url().'home/category/'.$menuData['items'][$itemId]['id'].'">'.$menuData['items'][$itemId][$this->text_column_name].'</a></li>';
     			//$retVal .='</span>' . '<div class="' . $class['div'] . '">' . $menuData['items'][$itemId][$this->text_column_name];
     	
     			//$retVal .= '</div>';

@@ -1,8 +1,8 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 // Constants paginator
-define('PERPAGA', 5);
-define('numberOfPages', 2);
+define('PERPAGA', 2);
+define('numberOfPages', 1);
 
 /*
 |--------------------------------------------------------------------------

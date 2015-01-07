@@ -66,6 +66,7 @@ class customer_m extends MY_Model {
 			// Log in user
 			$data = array (
 					'CusUser'  => $user [0] ['CusUser'],
+                                        'CusID'    => $user [0] ['CusID'],
 					'CusName'  => $user [0] ['CusName'],
 					'CusPhone' => $user [0] ['CusPhone'],
 					'CusAdd'   => $user [0] ['CusAdd'],

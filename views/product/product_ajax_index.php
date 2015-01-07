@@ -20,7 +20,7 @@
 			<td><?php echo $value["ProName"]; ?></td>
 			<td value="<?php echo $value['CateID']?>" class="numeric"><?php echo $value['CateName']; ?></td>
 			<td class=""><?php echo $value["ProDesc"]; ?></td>
-			<td class="numeric"><?php echo $value["ProPrice"]; ?></td><td><img src="http://localhost/DATN/media/123/_thumbs/<?php echo $value["ProPicName"]; ?>" alt=""></td>
+			<td class="numeric"><?php echo $value["ProPrice"]; ?></td><td><img src="<?php echo base_url()?>media/123/_thumbs/<?php echo $value["ProPicName"]; ?>" alt=""></td>
 			<td data-id="<?php echo $value['ProID']?>"><span class="icon-edit"></span></td>
 			<td data-no="<?php echo $start + 1;?>" data-id="<?php echo $value['ProID']?>"><span class="icon-trash"></span></td>
 		</tr>

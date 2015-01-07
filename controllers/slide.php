@@ -13,64 +13,63 @@ class slide extends Backend_Controller {
 		$config ['per_page'] = PERPAGA;
 		if ($this->input->is_ajax_request ()) {
 			$data ['start'] = ($this->input->get ( 'page' ) == FALSE) ? 0 : ( int ) $this->input->get ( 'page' );
-			$data ['count'] = $config ['total_rows'] = $this->news_m->get ( FALSE, TRUE );
-			$this->news_m->set_start($data['start']);
-                        $data['slides'] = $this->news_m->get();
+			$data ['count'] = $config ['total_rows'] = $this->slide_m->get ( FALSE, TRUE );
+			$this->slide_m->set_start($data['start']);
+                        $data['slides'] = $this->slide_m->get();
 			$this->pagination->initialize ( $config );
 			$data ['pagination'] = $this->pagination->create_links ();
-			$ajax = $this->load->view ( 'news/news_ajax_index', $data, true );
+			$ajax = $this->load->view ( 'slide/slide_ajax_index', $data, true );
 			echo $ajax;
 		} else {
-			$data ['count'] = $config ['total_rows'] = $this->news_m->get ( FALSE, TRUE );
-			$this->news_m->set_start();
-                        $data['news'] = $this->news_m->get();
+			$data ['count'] = $config ['total_rows'] = $this->slide_m->get ( FALSE, TRUE );
+			$this->slide_m->set_start();
+                        $data['slides'] = $this->slide_m->get();
 			$this->pagination->initialize ( $config );
 			$data ['pagination'] = $this->pagination->create_links ();
-			$this->template->write_view ( 'content', 'news/view', $data, true );
+			$this->template->write_view ( 'content', 'slide/view', $data, true );
 			$this->template->render ();
 		}
 	}
-	public function news_del() {
+	public function slide_del() {
 		if ($this->input->is_ajax_request ()) {
 			$id = $this->input->post ( 'id' );
 			$no = $this->input->post ( 'no' );
 			$page = $this->input->post ( 'page' );
-			$return = $this->news_m->delete ( $id );
+			$return = $this->slide_m->delete ( $id );
 			if ($return) {
-				$config ['base_url'] = base_url () . "news/view?";
+				$config ['base_url'] = base_url () . "slide/view?";
 				$config ['per_page'] = PERPAGA;
-				$data ['count'] = $config ['total_rows'] = $this->news_m->get ( FALSE, TRUE );
+				$data ['count'] = $config ['total_rows'] = $this->slide_m->get ( FALSE, TRUE );
 				$data ['start'] = 0;
 				if ($data ['count'] > PERPAGA)
 					$data ['start'] = (($no == ($page - 1) * PERPAGA + 1) && $no == $data ['count'] + 1) ? (($page >= 2) ? (($page - 2) * PERPAGA) : 0) : ($page - 1) * PERPAGA;
-				$this->news_m->set_start($data ['start']);
-				$data ['news'] = $this->news_m->get ();
+				$this->slide_m->set_start($data ['start']);
+				$data ['slides'] = $this->slide_m->get ();
 				$this->pagination->initialize ( $config );
 				$data ['pagination'] = $this->pagination->create_links ();
-				$ajax = $this->load->view ( 'news/news_ajax_index', $data, true );
+				$ajax = $this->load->view ( 'slide/slide_ajax_index', $data, true );
 				echo $ajax;
 			}
 		}
 	}
-	public function news_create() {
+	public function slide_create() {
 		if ($this->input->is_ajax_request ()) {
 			$post = $this->input->post ();  
 			$insert = array (
-					'NewTitle' => $post ['NewTitle'],
-					'NewContent' => $post ['NewContent'],
-                                        'NewDesc' => $post ['NewDesc'],
-                                        'NewStt' => $post ['NewStt'],
-                                        'NewDate' => date("Y-m-d H:i:s"),
+					'SlideTitle' => $post ['SlideTitle'],
+					'SlideContent' => $post ['SlideContent'],
+                                        'SlideStt' => $post ['SlideStt'],
+                                        'SlideDate' => date("Y-m-d H:i:s"),
 			);
-                        if(!empty($post ['NewPicName'][0]))  $insert['NewPicName'] = $post ['NewPicName'][0]; 
-                        else $insert['NewPicName'] = 'Images/default.jpg';
-			$rules = $this->news_m->rules;
+                        if(!empty($post ['SlidePicName'][0]))  $insert['SlidePicName'] = $post ['SlidePicName'][0]; 
+                        else $insert['SlidePicName'] = 'Images/default.jpg';
+			$rules = $this->slide_m->rules;
 			$this->form_validation->set_rules($rules);
 			if ($this->form_validation->run () == TRUE) {
-				$return = $this->news_m->save ( $insert );
+				$return = $this->slide_m->save ( $insert );
 				if ($return)
 					echo json_encode ( array (
-							'msg' => 'Thêm bài viết mới thành công' 
+							'msg' => 'Thêm slide mới thành công' 
 					) );
 				die ();
 			} else {
@@ -82,9 +81,9 @@ class slide extends Backend_Controller {
 			}
 		} else {
 			$data = array ();
-			$this->template->add_title ( 'Tạo Tin tức' );
+			$this->template->add_title ( 'Tạo Slide' );
 			$this->template->write ( 'title', '' );
-			$this->template->write ( 'desption', 'Tạo Tin tức' );
+			$this->template->write ( 'desption', 'Tạo Slide' );
 			$this->load->helper ( array (
 					'url',
 					'editor_helper' 
@@ -94,28 +93,26 @@ class slide extends Backend_Controller {
 			$this->db->where ( 'parent_id <>', 0 );
 			$data ['cats'] = $this->category_m->get ();
 			$data ['ckediter'] = $this->ckeditor->replace ( "demo", editerGetEnConfig () );
-			$this->template->write_view ( 'content', 'news/new_create', $data, true );
+			$this->template->write_view ( 'content', 'slide/slide_create', $data, true );
 			$this->template->render ();
 		}
 	}
 	public function edit($id) { 
 		$data = array ();
-		$data['news'] = $this->news_m->get($id);
+		$data['slides'] = $this->slide_m->get($id);
 		//var_dump($data['news']);die;
 		//if($id == null || empty($data['news'])) redirect('news/view');
 		if ($this->input->is_ajax_request ()) {
 			$post = $this->input->post ();
 			$pro = array (
-					'ProName' => $post ['proname'],
-					'ProPrice' => $post ['price'],
-					'ProQuantity' => $post ['quantity'],
-					'CateID' => $post ['cat'],
-					'ProDesc' => $post ['descr'] 
+					'SlideTitle' => $post ['SlideTitle'],
+					'SlideContent' => $post ['SlideContent'],
+					'SlideStt' => $post ['SlideStt']
 			);
-			$rules = $this->news_m->rules;
+			$rules = $this->slide_m->rules;
 			$this->form_validation->set_rules ( $rules );
 			if ($this->form_validation->run () == TRUE) { 
-				$return = $this->news_m->save( $pro, $post['id']);
+				$return = $this->slide_m->save( $pro, $post['id']);
 				if ($return)
 					echo json_encode ( array (
 							'msg' => 'update successfully' 
@@ -128,12 +125,12 @@ class slide extends Backend_Controller {
 				die ();
 			}
 		} else {
-			$this->template->add_title ( 'Chỉnh sửa bài viết' );
+			$this->template->add_title ( 'Chỉnh sửa slide' );
 			$this->template->write ( 'title', '' );
-			$this->template->write ( 'desption', 'Chỉnh sửa bài viết' );
+			$this->template->write ( 'desption', 'Chỉnh sửa slide' );
 			$this->load->helper ( array ('url','editor_helper') );
 			$data ['ckediter'] = $this->ckeditor->replace ( "demo", editerGetEnConfig () );
-			$this->template->write_view ( 'content', 'news/news_edit', $data, true );
+			$this->template->write_view ( 'content', 'slide/slide_edit', $data, true );
 			$this->template->render ();
 		}
 	}
