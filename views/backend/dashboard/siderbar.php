@@ -44,7 +44,7 @@
                         Kích thước</a>
                 </li>
                 <li > 
-                    <a href="<?php echo base_url() ?>size/add"> 
+                    <a href="<?php echo base_url() ?>size/create"> 
                         Thêm kích thước</a> 
                 </li> 
             </ul> 

@@ -61,14 +61,7 @@ class product extends Backend_Controller {
     public function product_create() {
         if ($this->input->is_ajax_request()) {
             $post = $this->input->post();
-            $pro = array(
-                'ProName' => $post ['proname'],
-                'ProPrice' => $post ['price'],
-                'ProQuantity' => $post ['quantity'],
-                'CateID' => $post ['cat'],
-                'ProDesc' => $post ['descr'],
-                'ProStt' => $post ['stt'],
-            );
+
             if (!empty($post ['imgs'][0]))
                 $pro['ProPicName'] = $post ['imgs'][0];
             else
@@ -76,8 +69,46 @@ class product extends Backend_Controller {
             $rules = $this->product_m->rules;
             $this->form_validation->set_rules($rules);
             if ($this->form_validation->run() == TRUE) {
+                $quantity = 0;
+                foreach ($post['array_val'] as $key => $value) {
+                    if (!empty($value)) {
+                        $quantity += $value;
+                    }
+                }
+                $pro = array(
+                    'ProName' => $post ['proname'],
+                    'ProPrice' => $post ['price'],
+                    'CateID' => $post ['cat'],
+                    'ProDesc' => $post ['descr'],
+                    'ProStt' => $post ['stt'],
+                    'ProQuantity' => $quantity,
+                );
+
                 $return = $this->product_m->save($pro);
                 if ($return) {
+                    $proSize = array();
+                    $Improt = array();
+                    foreach ($post['array_val'] as $key => $value) {
+                        if (!empty($value)) {
+                            $proSize[] = array(
+                                'ProID' => $return,
+                                'SizeID' => $post['array_size'][$key],
+                                'Quantity' => (int) $value,
+                                    //'Discount' =>
+                            );
+                            $Improt[] = array(
+                                'ProID' => $return,
+                                'ImportDate' => date("Y-m-d H:i:s"),
+                                'SizeID' => $post['array_size'][$key],
+                                'ImportQuantity' => (int) $value,
+                                'ImportPrice' => $post['priceIn']
+                            );
+                        }
+                    }
+                    $this->load->model('improt_m');
+                    $this->improt_m->save($Improt, FALSE, TRUE);
+                    $this->load->model('ProSize_m');
+                    $this->ProSize_m->save($proSize, FALSE, TRUE);
                     if (!empty($post ['imgs']) && is_numeric($return)) {
                         $image = array();
                         foreach ($post ['imgs'] as $key => $value) {
@@ -121,9 +152,11 @@ class product extends Backend_Controller {
                 'editor_helper'
             ));
             $this->load->model('category_m');
+            $this->load->model('size_m');
             $this->db->order_by('id');
             $this->db->where('parent_id <>', 0);
             $data ['cats'] = $this->category_m->get();
+            $data['sizes'] = $this->size_m->get();
             $data ['ckediter'] = $this->ckeditor->replace("demo", editerGetEnConfig());
             $this->template->write_view('content', 'product/pro_create', $data, true);
             $this->template->render();

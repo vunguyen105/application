@@ -11,13 +11,8 @@ class product_m extends MY_Model {
 			),
 			'price' => array (
 					'field' => 'price',
-					'label' => 'Số lượng',
-					'rules' => 'trim|required|xss_clean' 
-			),
-			'quantity' => array (
-					'field' => 'quantity',
 					'label' => 'Giá',
-					'rules' => 'trim|required|is_natural' 
+					'rules' => 'trim|required|xss_clean' 
 			),
 			'cat' => array (
 					'field' => 'cat',

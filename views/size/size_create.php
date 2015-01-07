@@ -8,7 +8,7 @@
 		<div class="portlet box green">
 			<div class="portlet-title">
 				<div class="caption">
-					<i class="icon-reorder"></i>Tài khoản người dùng
+					<i class="icon-reorder"></i>Tạo kích thước sản phẩm
 				</div>
 				<div class="tools">
 					<a href="javascript:;" class="collapse"></a> <a href="javascript:;"
@@ -49,7 +49,7 @@
 
 <script>
 jQuery(document).on('click', "#save", function() {
-        BootstrapDialog.confirm('Thông báo', 'Bạn muốn kích thước này', function(result) {
+        BootstrapDialog.confirm('Thông báo', 'Bạn muốn tạo kích thước này', function(result) {
             if (result) {
             	var SizeName = $("input[name='SizeName']").val(); 
                 $.ajax({
@@ -72,7 +72,7 @@ jQuery(document).on('click', "#save", function() {
                                     hotkey: 13, // Enter.
                                     action: function() {
                                         BootstrapDialog.closeAll();
-                                        //local.href = <?php //echo  base_url().'dashboard/product_create'; ?>;
+                                        location.href = '<?php echo  base_url().'size/create'?>';
                                     }
                                 }]
                         });

@@ -13,22 +13,6 @@
 								</div>
 							</div>
 							<div class="portlet-body">
-								<div class="clearfix">
-									<div class="btn-group">
-										<button id="sample_editable_1_new" class="btn green">
-										Add New <i class="icon-plus"></i>
-										</button>
-									</div>
-									<div class="btn-group pull-right">
-										<button class="btn dropdown-toggle" data-toggle="dropdown">Tools <i class="icon-angle-down"></i>
-										</button>
-										<ul class="dropdown-menu">
-											<li><a href="#">Print</a></li>
-											<li><a href="#">Save as PDF</a></li>
-											<li><a href="#">Export to Excel</a></li>
-										</ul>
-									</div>
-								</div>
 								<table class="table table-striped table-bordered table-hover" id="sample_1">
 									<thead>
 										<tr>

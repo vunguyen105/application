@@ -6,7 +6,7 @@
         <!-- BEGIN EXAMPLE TABLE PORTLET-->
         <div class="portlet box light-grey">
             <div class="portlet-title">
-                <div class="caption"><i class="icon-globe"></i>Managed Table</div>
+                <div class="caption"><i class="icon-globe"></i>Kích thước sản phẩm</div>
                 <div class="tools">
                     <a href="javascript:;" class="collapse"></a>
                     <a href="#portlet-config" data-toggle="modal" class="config"></a>
@@ -15,58 +15,39 @@
                 </div>
             </div>
             <div class="portlet-body">
-                <div class="table-toolbar">
-                    <div class="btn-group">
-                        <button id="create_user" class="btn green">
-                            Add New <i class="icon-plus"></i>
-                        </button>
-                    </div>
-                    <div class="btn-group pull-right">
-                        <button class="btn dropdown-toggle" data-toggle="dropdown">Tools <i class="icon-angle-down"></i>
-                        </button>
-                        <ul class="dropdown-menu pull-right">
-                            <li><a href="#">Print</a></li>
-                            <li><a href="#">Save as PDF</a></li>
-                            <li><a href="#">Export to Excel</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <?php if (!empty($size)) { ?>    
+                <?php if (!empty($sizes)) { ?>    
                     <div id="content">
-                        <table class="table table-striped table-bordered table-hover" id="table_user">
-                            <thead>
+                        <table id="table_product"
+                               class="table table-condensed table-hover">
+                            <thead class="flip-content">
                                 <tr>
-                                    <th style="width:8px;"><input type="checkbox" class="group-checkable" data-set="#sample_1 .checkboxes" /></th>
                                     <th>SizeID</th>
                                     <th class="hidden-480">Size name</th>
-                                    <th ></th>
+                                    <th class="hidden-480">Chỉnh sửa</th>
+                                    <th class="">Xóa</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <?php
-                                $i = 1;
-                                foreach ($size as $key => $value):
-                                    ?> 
-                                    <tr class="odd gradeX">
-                    <td style="width:8px;"><input type="checkbox" class="checkboxes" value="1" /></td>
-                    <td style="width:8px;"><?php echo $value["SizeID"]; ?></td>
-                    <td class="hidden-480"><?php echo $value["SizeName"]; ?></td>
-                    <td data-no="<?php echo $i;?>" data-id="<?php echo $value['SizeID']?>">
-                        <span class="icon-edit"></span>
-                        <span class="icon-trash"></span>
-                    </td>
-                </tr>
-                                <?php endforeach; ?>
+                            <?php foreach ($sizes as $key => $value) : ?>
+                                <tbody>
+                                    <tr>
+                                        <td><?php echo $value["SizeID"]; ?></td>
+                                        <td class="hidden-480"><?php echo $value["SizeName"]; ?></td>
+                                        <td class="hidden-480" data-id="<?php echo $value['SizeID'] ?>"><span class="icon-edit"></span></td>
+                                        <td data-id="<?php echo $value['SizeID'] ?>"><span class="icon-trash"></span></td>
+                                    </tr>
+                                </tbody>
+                                <?php endforeach;
+                            ?>
                         </table>
                         <div class="row-fluid">
                             <div class="" id="ajax_paging">
                                 <span style="float: right;" class="dataTables_info" id="sample_1_info">Có tất cả <?php echo $count; ?> dòng dữ liệu</span>
-                                <?php echo $pagination; ?>
+    <?php echo $pagination; ?>
                             </div>
 
                         </div>
                     </div>      
-                <?php } ?>
+<?php } ?>
             </div>
         </div>
         <!-- END EXAMPLE TABLE PORTLET-->
@@ -75,27 +56,27 @@
 
 <script>
 
-    
-    jQuery(document).ready(function() {  
+
+    jQuery(document).ready(function () {
         applyPagination();
     });
-    jQuery(document).on('click', '.icon-edit', function() {
-      var id = $(this).parent().attr('data-id');
+    jQuery(document).on('click', '.icon-edit', function () {
+        var id = $(this).parent().attr('data-id');
         var no = $(this).parent().attr('data-no');
-      var that = $(this).parent().parent();
-      var username = $(this).parents().prev().prev().prev().prev().text();
-      var email = $(this).parents().prev().prev().prev().text();
-      var text = '<form action="<?php echo base_url() ?>dashboard/user_edit" method="post" id="form_user_edit" class="">';
+        var that = $(this).parent().parent();
+        var username = $(this).parents().prev().prev().prev().prev().text();
+        var email = $(this).parents().prev().prev().prev().text();
+        var text = '<form action="<?php echo base_url() ?>dashboard/user_edit" method="post" id="form_user_edit" class="">';
         text += '<div class="controls">'
         text += '<label class="control-label">Tài khoản</label>';
-        text += '<input type="text" name="user" value="'+username+'" class="m-wrap large" placeholder="Tài khoản">'
+        text += '<input type="text" name="user" value="' + username + '" class="m-wrap large" placeholder="Tài khoản">'
         text += '<label class="control-label">Tên</label>';
         text += '<input type="text" name="lastname" class="m-wrap large" placeholder="Tên">'
-        text += '<input type="hidden" name="id" value="'+id+'">'
+        text += '<input type="hidden" name="id" value="' + id + '">'
         text += '<label class="control-label">Họ</label>';
         text += '<input type="text" name="firstname" class="m-wrap large" placeholder="Họ">'
         text += '<label class="control-label">Email</label>';
-        text += '<input type="text" name="email" value="'+email+'" class="m-wrap large" placeholder="email">'
+        text += '<input type="text" name="email" value="' + email + '" class="m-wrap large" placeholder="email">'
         text += '</div>'
         text += '</form>'
         BootstrapDialog.show({
@@ -105,16 +86,16 @@
                     label: 'Create',
                     cssClass: 'btn green',
                     hotkey: 13, // Enter.
-                    action: function() {
+                    action: function () {
                         var form2 = $('form#form_user_edit');
                         $.ajax({
                             type: "POST",
                             data: form2.serialize(),
                             url: form2.attr('action'),
                             dataType: 'json',
-                            beforeSend: function() {
+                            beforeSend: function () {
                             },
-                            success: function(data) { 
+                            success: function (data) {
                                 if (data != false)
                                 {
                                     that.children('td:first').next().html(data.username);
@@ -130,7 +111,7 @@
         });
     });
 
-    jQuery(document).on('click', '#create_user', function() {
+    jQuery(document).on('click', '#create_user', function () {
         var text = '<form action="<?php echo base_url() ?>dashboard/create_user" method="post" id="form_create_user" class="">';
         var that = $(this).parent().parent();
         text += '<div class="controls">'
@@ -151,7 +132,7 @@
                     label: 'Create',
                     cssClass: 'btn green',
                     hotkey: 13, // Enter.
-                    action: function() {
+                    action: function () {
 //                        var user = $('input#user.m-wrap ').val();
 //                        var lastname = $('input#lastname.m-wrap ').val();
 //                        var firstname = $('input#user.m-wrap ').val();
@@ -163,12 +144,12 @@
                             data: form2.serialize(),
                             url: form2.attr('action'),
                             dataType: 'json',
-                            beforeSend: function() {
+                            beforeSend: function () {
                             },
-                            success: function(data) { 
+                            success: function (data) {
                                 if (data.stt == true)
                                 {
-                                    
+
                                     BootstrapDialog.closeAll();
                                     alert('bạn đã tạo tài khoản thành công');
                                 }
@@ -181,11 +162,11 @@
                 }]
         });
     });
-    jQuery(document).on('click', 'table#table_user span.icon-trash', function() {
+    jQuery(document).on('click', 'table#table_user span.icon-trash', function () {
         var id = $(this).parent().attr('data-id');
         var that = $(this).parent().parent();
         var page = $('div.pagination li.active').children('a').text();
-         BootstrapDialog.confirm('Thông báo', '', function(result) {
+        BootstrapDialog.confirm('Thông báo', '', function (result) {
             if (result) {
                 $.ajax({
                     type: "POST",
@@ -194,11 +175,11 @@
                         page: page
                     },
                     url: 'del',
-                    beforeSend: function() {
+                    beforeSend: function () {
                     },
-                    success: function(data) {
-                       $("#content").html(data);
-                       applyPagination();
+                    success: function (data) {
+                        $("#content").html(data);
+                        applyPagination();
                     }
                 });
             } else {
@@ -206,8 +187,8 @@
             }
         });
     });
-function applyPagination() {
-        $("#ajax_paging a").click(function() {
+    function applyPagination() {
+        $("#ajax_paging a").click(function () {
             if ($(this).attr('doclick') == '0') {
                 return false;
             } else {
@@ -216,12 +197,12 @@ function applyPagination() {
                     type: "POST",
                     data: {
                         ajax: 1
-                    }, 
+                    },
                     url: url,
-                    beforeSend: function() {
+                    beforeSend: function () {
                         //$('#global_ajax_processing').fadeIn('slow');
                     },
-                    success: function(msg) {
+                    success: function (msg) {
                         // $('#global_ajax_processing').fadeOut('slow');
                         $("#content").html(msg);
                         applyPagination();
