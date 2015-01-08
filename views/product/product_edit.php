@@ -217,7 +217,7 @@ a, a:hover, a:link, a:active, a:focus {
                          var link = current.children('a').attr('data-link');
                          array_anh.push(link);
                      });
-                 });
+                 });console.log(array_anh);
                 $.ajax({
                     type: "POST",
                     data: {

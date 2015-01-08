@@ -16,6 +16,10 @@ class product extends Backend_Controller {
         $this->template->add_title('Danh sách sản phẩm');
         $this->template->write('title', 'List product');
         $this->template->write('desption', 'Danh sách sản phẩm');
+        $this->load->model('category_m');
+        $this->db->order_by('id');
+        $this->db->where('parent_id <>', 0);
+        $data ['cats'] = $this->category_m->get();
         $config ['base_url'] = base_url() . "product/view?";
         $config ['per_page'] = PERPAGA;
         if ($this->input->is_ajax_request()) {
@@ -33,6 +37,21 @@ class product extends Backend_Controller {
             $data ['pagination'] = $this->pagination->create_links();
             $this->template->write_view('content', 'product/view', $data, true);
             $this->template->render();
+        }
+    }
+
+    public function search() {
+        $config ['base_url'] = base_url() . "product/search?";
+        $config ['per_page'] = PERPAGA;
+        if ($this->input->is_ajax_request()) {
+            $post = $this->input->post();
+            $data ['start'] = ($this->input->get('page') == FALSE) ? 1 : (int) $this->input->get('page');
+            $data ['count'] = $config ['total_rows'] = $this->product_m->search('', $post['name'], $post['cat'], FALSE, TRUE);
+            $data ['products'] = $this->product_m->search($data ['start'], $post['name'], $post['cat']);
+            $this->pagination->initialize($config);
+            $data ['pagination'] = $this->pagination->create_links();
+            $ajax = $this->load->view('product/product_ajax_index', $data, true);
+            echo $ajax;
         }
     }
 
@@ -61,11 +80,10 @@ class product extends Backend_Controller {
     public function product_create() {
         if ($this->input->is_ajax_request()) {
             $post = $this->input->post();
-
             if (!empty($post ['imgs'][0]))
-                $pro['ProPicName'] = $post ['imgs'][0];
+                $ProPicName = $post ['imgs'][0];
             else
-                $pro['ProPicName'] = 'Images/default.jpg';
+                $ProPicName = 'Images/default.jpg';
             $rules = $this->product_m->rules;
             $this->form_validation->set_rules($rules);
             if ($this->form_validation->run() == TRUE) {
@@ -81,9 +99,9 @@ class product extends Backend_Controller {
                     'CateID' => $post ['cat'],
                     'ProDesc' => $post ['descr'],
                     'ProStt' => $post ['stt'],
+                    'ProPicName' => $ProPicName,
                     'ProQuantity' => $quantity,
                 );
-
                 $return = $this->product_m->save($pro);
                 if ($return) {
                     $proSize = array();
@@ -226,6 +244,82 @@ class product extends Backend_Controller {
             $data ['ckediter'] = $this->ckeditor->replace("demo", editerGetEnConfig());
             $this->template->write_view('content', 'product/product_edit', $data, true);
             $this->template->render();
+        }
+    }
+
+    public function detail($id) {
+        $data = array();
+        $this->load->model('file_m');
+        $data['products'] = $this->product_m->get($id);
+        $data['imgs'] = $this->file_m->get_file($id);
+        if ($id == null || empty($data['products']))
+            redirect('product/view');
+        if ($this->input->is_ajax_request()) {
+            $post = $this->input->post();
+            $pro = array(
+                'ProName' => $post ['proname'],
+                'ProPrice' => $post ['price'],
+                'ProQuantity' => $post ['quantity'],
+                'CateID' => $post ['cat'],
+                'ProDesc' => $post ['descr'],
+                'ProStt' => $post ['stt'],
+            );
+            if (!empty($post ['imgs'][0]))
+                $pro['ProPicName'] = $post ['imgs'][0];
+            else
+                $pro['ProPicName'] = 'Images/default.jpg';
+            $rules = $this->product_m->rules;
+            $this->form_validation->set_rules($rules);
+            if ($this->form_validation->run() == TRUE) {
+                $return = $this->product_m->save($pro, $post['id']);
+                if ($return) {
+                    if (!empty($post ['imgs']) && is_numeric($return)) {
+                        $this->load->model('file_m');
+                        $this->file_m->delete_by('ProID', $return);
+                        $image = array();
+                        foreach ($post ['imgs'] as $key => $value) {
+                            $img = array(
+                                'FileName' => $value,
+                                'ProID' => $return
+                            );
+                            $image [] = $img;
+                        }
+                        $this->file_m->save($image, FALSE, TRUE);
+                    }
+                    echo json_encode(array(
+                        'msg' => 'Cập nhật sản phẩm thành công'
+                    ));
+                    die;
+                }
+            } else {
+                echo json_encode(array(
+                    'msg' => 'chưa nhập dữ liệu nhập vào hoặc nhập sai dữ liệu',
+                    'error' => validation_errors_array()
+                ));
+                die;
+            }
+        } else {
+            $this->template->add_title('Chi tiết sản phẩm');
+            $this->template->write('title', '');
+            $this->template->write('desption', 'Product edit');
+            $this->load->helper(array('url', 'editor_helper'));
+            $this->load->model('category_m');
+            $this->db->order_by('id');
+            $this->db->where('parent_id <>', 0);
+            $data ['cats'] = $this->category_m->get();
+            $this->load->model('Improt_m');
+            $this->db->join('Size', 'improt.SizeID = Size.SizeID', 'left');
+            $data['import'] = $this->Improt_m->get_by('ProID', $id);
+            $data ['ckediter'] = $this->ckeditor->replace("demo", editerGetEnConfig());
+            $this->template->write_view('content', 'product/detail', $data, true);
+            $this->template->render();
+        }
+    }
+
+    public function block() {
+        if ($this->input->is_ajax_request()) {
+            $stt = $_POST['st'];
+            $this->product_m->save(array('ProStt' => $stt), $_POST['id']);
         }
     }
 

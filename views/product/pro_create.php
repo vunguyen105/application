@@ -6,7 +6,6 @@
         margin-right: 250px;
         padding: 20px 0;
     }
-
     .isotope {
         transition-property: height, width;
     }
@@ -85,7 +84,7 @@
                                 <div class="control-group">
                                     <label class="control-label" for=""><?php echo $value["SizeName"]; ?></label>
                                     <div class="controls">
-                                        <input name="" data-size="<?php echo $value["SizeID"]?>" type="text" id="" class="m-wrap span12"
+                                        <input name="" data-size="<?php echo $value["SizeID"] ?>" type="text" id="" class="m-wrap span12"
                                                placeholder="Số lượng">
                                         <span class="help-block"></span>
                                     </div>
@@ -219,7 +218,7 @@
             var length = foder.length + file.length + 1;
             var link = fileUrl.substring(0, fileUrl.length - length) + '_thumbs/' + fileUrl.substring(fileUrl.length - length, fileUrl.length);
             var html = '<li class="image isotope-item">';
-            html += '<a href = ""  class = "cboxElement">';
+            html += '<a href = ""  class = "cboxElement" data-link="' + fileUrl.substring(fileUrl.length - length, fileUrl.length) + '">';
             html += '<img alt = ""src = "' + link + '"></a>';
             html += '<span class = "filename"><a class="icon-trash"></a></span></li>';
             $('#imges').append(html);
@@ -246,14 +245,13 @@
             var array_size = [];
             $('#size_list').each(function () {
                 $(this).find('div.control-group div.controls').each(function () {
-                        var current = $(this);
-                        var val = current.children('input').val();
-                        var size = current.children('input').attr('data-size');
-                        array_val.push(val);
-                        array_size.push(size);
-                    });
+                    var current = $(this);
+                    var val = current.children('input').val();
+                    var size = current.children('input').attr('data-size');
+                    array_val.push(val);
+                    array_size.push(size);
+                });
             });
-            alert(array_size);
             BootstrapDialog.confirm('Thông báo', 'Bạn muốn thêm sản sản phẩm này', function (result) {
                 if (result) {
                     var proname = $("input[name='proname']").val();
@@ -279,7 +277,7 @@
                         data: {
                             proname: proname,
                             price: price,
-                            priceIn:priceIn,
+                            priceIn: priceIn,
                             quantity: quantity,
                             cat: cat,
                             descr: descr,

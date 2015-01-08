@@ -36,18 +36,18 @@
                                         <td data-id="<?php echo $value['SizeID'] ?>"><span class="icon-trash"></span></td>
                                     </tr>
                                 </tbody>
-                                <?php endforeach;
+                            <?php endforeach;
                             ?>
                         </table>
                         <div class="row-fluid">
                             <div class="" id="ajax_paging">
                                 <span style="float: right;" class="dataTables_info" id="sample_1_info">Có tất cả <?php echo $count; ?> dòng dữ liệu</span>
-    <?php echo $pagination; ?>
+                                <?php echo $pagination; ?>
                             </div>
 
                         </div>
                     </div>      
-<?php } ?>
+                <?php } ?>
             </div>
         </div>
         <!-- END EXAMPLE TABLE PORTLET-->

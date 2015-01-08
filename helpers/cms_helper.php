@@ -60,4 +60,11 @@ if ( ! function_exists('stripUnicode_slug'))
 			return $str;
 	}
 }
-
+function check_stt($id) {
+	$CI = & get_instance ();
+        if($id == 1) 
+            $html = '<span class="label label-success">Hiện</span></span>';
+        else 
+            $html = '<span class="label label-inverse">Ẩn</span>';
+	return $html;
+}
