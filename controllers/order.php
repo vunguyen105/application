@@ -8,7 +8,7 @@ class order extends Backend_Controller {
         $this->load->library('session');
         $this->load->library('category_lib');
         $this->load->model('order_m');
-        $this->load->library ( 'pagination' );
+        $this->load->library('pagination');
         $this->new_nested_set = $this->category_lib->category_initialize();
     }
 
@@ -18,32 +18,36 @@ class order extends Backend_Controller {
         $config ['per_page'] = PERPAGA;
         if ($this->input->is_ajax_request()) {
             $data ['start'] = ($this->input->get('page') == FALSE) ? 0 : (int) $this->input->get('page');
-            $data ['count'] = $config ['total_rows'] = $this->order_m->get(FALSE, TRUE);
+            $data ['count'] = $config ['total_rows'] = $this->order_m->order(FALSE, TRUE);
             $this->order_m->set_start($data ['start']);
-            $data ['orders'] = $this->order_m->get();
+            $data ['orders'] = $this->order_m->order(); // echo "<pre>";var_dump($data ['orders']);die;
             $this->pagination->initialize($config);
             $data ['pagination'] = $this->pagination->create_links();
             $ajax = $this->load->view('order/order_ajax', $data, true);
             echo $ajax;
         } else {
-            $data ['count'] = $config ['total_rows'] = $this->order_m->get(FALSE, TRUE);
+            $this->template->add_title('Danh sách sản hóa đơn');
+            $this->template->write('title', 'Danh sách hóa đơn');
+            $data ['count'] = $config ['total_rows'] = $this->order_m->order(FALSE, TRUE);
             $this->order_m->set_start();
-            $data ['orders'] = $this->order_m->get(); // var_dump($data ['products']);die;
+            $data ['orders'] = $this->order_m->order();         //   echo "<pre>";var_dump($data ['orders']);die;
             $this->pagination->initialize($config);
             $data ['pagination'] = $this->pagination->create_links();
             $this->template->write_view('content', 'order/view', $data, true);
             $this->template->render();
         }
-        $this->template->add_title('Danh sách Hóa đơn');
-        $this->template->write('title', 'Hóa đơn');
-        $this->template->write('desption', 'Danh sách ');
-        $this->template->write_view('content', 'hoadon/test', '', true);
-        $this->template->render();
     }
-    
-    
-    public function orderDetail() {
-        echo 'xxx';
+
+    public function orderdetail($id) {
+        if (empty($id))
+            redirect('order/view');
+        $this->template->add_title('Chi tiết sản hóa đơn');
+            $this->template->write('title', 'Chi tiết hóa đơn');
+        $data['order'] = $this->order_m->order($id);
+        $this->load->model('OrderDetail_m');
+        $data['orderdetail'] = $this->OrderDetail_m->orderdetail($id);
+        $this->template->write_view('content', 'order/orderdetail', $data, true);
+        $this->template->render();
     }
 
 }

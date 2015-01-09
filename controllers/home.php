@@ -14,7 +14,6 @@ class home extends CI_Controller {
 
     public function login() {
         $product = 'home/product';
-        $this->load->model('customer_m');
         $this->customer_m->loggedin() == FALSE || redirect($product);
 
         $post = $this->input->post();
@@ -206,6 +205,7 @@ class home extends CI_Controller {
     }
 
     public function checkout() {
+        $this->customer_m->loggedin() == TRUE || redirect('home/login');
         $data = '';
         $data['content'] = $this->load->view('frontend/checkout', $data, true);
         $this->load->view('frontend/layout', $data);
@@ -250,7 +250,7 @@ class home extends CI_Controller {
                     foreach ($post['val'] as $key => $value) {
                         $OrderDetail[] = array(
                             'OrdID' => $OrdID,
-                            'ProSizeID' => 1,
+                            'ProSizeID' => $key +1,
                             'OrdQuantity' => $value,
                             'OrdPrice' => $post['price'][$key]
                         );

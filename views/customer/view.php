@@ -40,19 +40,18 @@
 							<td class="hidden-480"><?php echo $value["CusAdd"]; ?></td>
                                                         <td class="hidden-480" data-id="<?php echo $value['CusID']?>"><span
 								class="icon-edit"></span></td>
-							<td data-no="<?php echo $i;?>"
-								data-id="<?php echo $value['CusID']?>"><span class="icon-trash"></span></td>
+							<td data-no="<?php echo $i;?>"data-id="<?php echo $value['CusID']?>"><span class="icon-trash"></span></td>
 						</tr>
 					</tbody>
                        <?php $i++; endforeach; ?>
 				</table>
-				<div class="row-fluid">
-					<div class="" id="ajax_paging">
-						<span style="float: right;" class="dataTables_info"
-							id="sample_1_info">Có tất cả <?php echo $count; ?> dòng dữ liệu</span>
-                         <?php echo $pagination; ?>
-                    </div>
-				</div>
+                            <div class="row-fluid">
+                                    <div class="" id="ajax_paging">
+                                        <span style="float: right;" class="dataTables_info"
+                                              id="sample_1_info">Có tất cả <?php echo $count; ?> dòng dữ liệu</span>
+                                              <?php echo $pagination; ?>
+                                    </div>
+                                </div>
 			</div>
 		</div>
 		<?php } ?>

@@ -205,7 +205,7 @@
                         hotkey: 13, // Enter.
                         action: function () {
                             BootstrapDialog.closeAll();
-                            location.href = '<?php echo  base_url().'product/product_create'?>';
+                           // location.href = '<?php //echo  base_url().'home/checkout'?>';
                         }
                     }]
             });

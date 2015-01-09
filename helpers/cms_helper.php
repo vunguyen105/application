@@ -68,3 +68,15 @@ function check_stt($id) {
             $html = '<span class="label label-inverse">Ẩn</span>';
 	return $html;
 }
+
+function check_stt_ord($id) {
+	$CI = & get_instance ();
+        if($id == 3) 
+            $html = '<span class="label label-success">Hoàn thành</span>';
+        elseif($id = 2) 
+            $html = '<span class="label label-warning">Chưa xử lý</span>';
+        else
+            $html = '<span class="label label-info">Đang xử lý</span>';
+	return $html;
+}
+

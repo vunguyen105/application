@@ -78,7 +78,7 @@ class customer_m extends MY_Model {
 		} else
 			return FALSE;
         }
-        public function loggedin() {
+        public function loggedin() { 
 		return ( bool ) $this->session->userdata ( 'logged' );
 	}
 	public function logout() {

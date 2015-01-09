@@ -62,7 +62,7 @@
                             <td>2014-12-09</td>
                             <td>Vũ Văn</td>
                             <td class="hidden-480">120 000</td>
-                            <td><span class="label label-danger">Hủy</span></td>
+                            <td><span class="label label-success">Hủy</span></td>
                             <td><span class="icon-search"></span></td>
                             <td ><span class="icon-trash"></span></td>
                         </tr>
