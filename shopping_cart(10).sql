@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 11, 2014 at 07:09 PM
+-- Generation Time: Jan 09, 2015 at 07:45 PM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.11
 
@@ -99,7 +99,7 @@ CREATE TABLE IF NOT EXISTS `customer` (
   `CusStt` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`CusID`),
   UNIQUE KEY `CusUser` (`CusUser`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=26 ;
 
 --
 -- Dumping data for table `customer`
@@ -113,7 +113,19 @@ INSERT INTO `customer` (`CusID`, `CusUser`, `CusPass`, `CusName`, `CusPhone`, `C
 (9, 'khue', 'e10adc3949ba59abbe56e057f20f883e', 'Vũ Khuê', '3424324', 'Long Biên Hà Nội', 'khue@gmail.com', 1),
 (10, 'nguyenvu', 'e10adc3949ba59abbe56e057f20f883e', 'vu nguyen', '43534543', 'fsd fsdf', 'v@yahoo.com', 1),
 (11, 'nguyenvu103', 'e10adc3949ba59abbe56e057f20f883e', 'vu nguyen', '43534543', 'fsd fsdf', 'v2@yahoo.com', 1),
-(13, 'vunguyen105910', '96e79218965eb72c92a549dd5a330112', 'Vũ Nguyên', '243234', 'hfjdh', 'vunguyen105911@gmail.com', 1);
+(13, 'vunguyen105910', '96e79218965eb72c92a549dd5a330112', 'Vũ Nguyên', '243234', 'hfjdh', 'vunguyen105911@gmail.com', 1),
+(14, 'vunguyen10501', 'e10adc3949ba59abbe56e057f20f883e', 'vu nguyen', '424324', 'hfjdh', 'vunguyen10501@gmail.com', 1),
+(15, 'nguyenbk01', 'e10adc3949ba59abbe56e057f20f883e', 'Vũ Nguyên', '43243', 'vxvc', 'vunguyen01@gmail.com', 1),
+(16, 'nguyenbk02', 'e10adc3949ba59abbe56e057f20f883e', 'Vũ Nguyên', '423423', 'fsf', 'vunguyen02@gmail.com', 1),
+(17, 'nguyenbk03', 'e10adc3949ba59abbe56e057f20f883e', 'Vũ Nguyên', '423423', 'fsf', 'vunguyen03@gmail.com', 1),
+(18, 'nguyenbk04', 'e10adc3949ba59abbe56e057f20f883e', 'Vũ Nguyên', '423423', 'fsf', 'vunguyen04@gmail.com', 1),
+(19, 'nguyenbk05', 'e10adc3949ba59abbe56e057f20f883e', 'Vũ Nguyên', '423423', 'fsf', 'vunguyen05@gmail.com', 1),
+(20, 'nguyenbk06', 'e10adc3949ba59abbe56e057f20f883e', 'Vũ Nguyên', '423423', 'fsf', 'vunguyen06@gmail.com', 1),
+(21, 'nguyen1', 'e10adc3949ba59abbe56e057f20f883e', 'nguyen', '2314324', 'ha noi vn', 'vunguyen1051@gmail.com', 1),
+(22, 'nguyen112', 'e10adc3949ba59abbe56e057f20f883e', 'nguyen', '2314324', 'ha noi vn', 'vunguyen105122313@gmail.com', 1),
+(23, 'nguyen112342432432', 'e10adc3949ba59abbe56e057f20f883e', 'nguyen', '2314324', 'ha noi vn', 'vunguyen10512231321321323@gmail.com', 1),
+(24, 'fsdfsdfsd', 'e10adc3949ba59abbe56e057f20f883e', 'nguyen', '2314324', 'ha noi vn', 'fddsfsdfsdf@gmail.com', 1),
+(25, 'nguyen1090909', 'e10adc3949ba59abbe56e057f20f883e', 'vu', '10688', 'ha noi', 'vunguyen10510909090@gmail.com', 1);
 
 -- --------------------------------------------------------
 
@@ -143,16 +155,13 @@ CREATE TABLE IF NOT EXISTS `file` (
   `FileName` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'define.jpg',
   `ProID` int(10) unsigned NOT NULL,
   PRIMARY KEY (`FileID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=36 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=53 ;
 
 --
 -- Dumping data for table `file`
 --
 
 INSERT INTO `file` (`FileID`, `FileName`, `ProID`) VALUES
-(1, 'Images/trietly.jpg', 35),
-(2, 'Images/trietlyhay.jpg', 35),
-(3, 'Images/trietlyhayhay.jpg', 35),
 (4, 'Images/trietly.jpg', 36),
 (5, 'Images/trietlyhay.jpg', 36),
 (6, 'Images/trietlyhayhay.jpg', 36),
@@ -162,9 +171,20 @@ INSERT INTO `file` (`FileID`, `FileName`, `ProID`) VALUES
 (29, 'Images/product7.jpg', 44),
 (30, 'Images/product9.jpg', 44),
 (31, 'Images/product11.jpg', 44),
-(33, 'Images/product9.jpg', 39),
-(34, 'Images/product12.jpg', 1),
-(35, 'Images/product12.jpg', 43);
+(35, 'Images/product12.jpg', 43),
+(36, 'Images/product12.jpg', 1),
+(37, 'Images/product8.jpg', 31),
+(38, 'Images/product10.jpg', 32),
+(41, 'Images/product2.jpg', 33),
+(43, 'Images/product1.jpg', 30),
+(44, 'Images/product4.jpg', 35),
+(45, 'Images/product9.jpg', 39),
+(46, 'Images/product11.jpg', 42),
+(48, 'Images/product1.jpg', 69),
+(49, 'Images/product9.jpg', 74),
+(50, 'Images/product1.jpg', 74),
+(51, 'Images/girl1.jpg', 75),
+(52, 'Images/girl1.jpg', 77);
 
 -- --------------------------------------------------------
 
@@ -182,7 +202,30 @@ CREATE TABLE IF NOT EXISTS `improt` (
   PRIMARY KEY (`ImportID`),
   KEY `fk_Improt_Product1_idx` (`ProID`),
   KEY `fk_Improt_Size1_idx` (`SizeID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=18 ;
+
+--
+-- Dumping data for table `improt`
+--
+
+INSERT INTO `improt` (`ImportID`, `ProID`, `SizeID`, `ImportDate`, `ImportQuantity`, `ImportPrice`) VALUES
+(1, 68, 2, '2015-01-07 15:23:16', 2, 432),
+(2, 68, 3, '2015-01-07 15:23:16', 4, 432),
+(3, 68, 4, '2015-01-07 15:23:16', 5, 432),
+(4, 69, 2, '2015-01-08 07:50:35', 2, 200),
+(5, 70, 3, '2015-01-08 07:54:12', 5, 300),
+(6, 71, 2, '2015-01-08 08:07:41', 2, 140),
+(7, 71, 3, '2015-01-08 08:07:41', 2, 140),
+(8, 71, 4, '2015-01-08 08:07:41', 5, 140),
+(9, 72, 2, '2015-01-08 08:09:44', 2, 130),
+(10, 73, 2, '2015-01-08 08:33:00', 1, 200),
+(11, 73, 3, '2015-01-08 08:33:00', 1, 200),
+(12, 73, 4, '2015-01-08 08:33:00', 2, 200),
+(13, 74, 2, '2015-01-08 08:35:06', 1, 200),
+(14, 74, 3, '2015-01-08 08:35:06', 1, 200),
+(15, 74, 4, '2015-01-08 08:35:06', 2, 200),
+(16, 75, 2, '2015-01-08 08:37:52', 3, 2),
+(17, 77, 2, '2015-01-08 08:47:31', 3, 3);
 
 -- --------------------------------------------------------
 
@@ -326,10 +369,53 @@ CREATE TABLE IF NOT EXISTS `order` (
   `OrdCus` varchar(150) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `OrdAdd` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `OrdPhone` varchar(20) NOT NULL,
+  `OrdTotal` int(11) NOT NULL,
   PRIMARY KEY (`OrdID`),
   KEY `fk_Order_PayMethod1_idx` (`PayID`),
   KEY `fk_Order_Customer1_idx` (`CusId`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=38 ;
+
+--
+-- Dumping data for table `order`
+--
+
+INSERT INTO `order` (`OrdID`, `PayID`, `CusId`, `OrdStt`, `OrdDate`, `OrdShipDate`, `OrdCus`, `OrdAdd`, `OrdPhone`, `OrdTotal`) VALUES
+(2, 1, 8, 1, '2015-01-09 13:54:18', '0000-00-00 00:00:00', 'vũ nguyen', 'ha noi', '87878423', 100),
+(3, 1, 8, 1, '2015-01-09 13:54:21', '0000-00-00 00:00:00', 'vũ nguyen', 'ha noi', '87878423', 250),
+(4, 1, 8, 1, '2015-01-07 05:31:06', '0000-00-00 00:00:00', 'vũ nguyen', 'ha noi', '87878423', 0),
+(5, 1, 8, 1, '2015-01-07 05:31:34', '0000-00-00 00:00:00', 'vũ nguyen', 'ha noi', '87878423', 0),
+(6, 1, 8, 1, '2015-01-07 05:32:09', '0000-00-00 00:00:00', 'vũ nguyen', 'ha noi', '87878423', 0),
+(7, 1, 8, 1, '2015-01-07 05:32:13', '0000-00-00 00:00:00', 'vũ nguyen', 'ha noi', '87878423', 0),
+(8, 1, 8, 1, '2015-01-07 05:39:22', '0000-00-00 00:00:00', 'vũ nguyen', 'ha noi', '87878423', 0),
+(9, 1, 8, 1, '2015-01-07 05:39:55', '0000-00-00 00:00:00', 'vũ nguyen', 'ha noi', '87878423', 0),
+(10, 1, 8, 1, '2015-01-07 05:40:12', '0000-00-00 00:00:00', 'vũ nguyen', 'ha noi', '87878423', 0),
+(11, 1, 8, 1, '2015-01-07 05:40:40', '0000-00-00 00:00:00', 'vũ nguyen', 'ha noi', '87878423', 0),
+(12, 1, 8, 1, '2015-01-07 05:41:04', '0000-00-00 00:00:00', 'vũ nguyen', 'ha noi', '87878423', 0),
+(13, 1, 8, 1, '2015-01-07 05:59:16', '0000-00-00 00:00:00', 'vũ nguyen', 'ha noi', '87878423', 0),
+(14, 1, 8, 1, '2015-01-07 06:01:58', '0000-00-00 00:00:00', 'vũ nguyen', 'ha noi', '87878423', 0),
+(15, 1, 8, 1, '2015-01-07 06:02:23', '0000-00-00 00:00:00', 'vũ nguyen', 'ha noi', '87878423', 0),
+(16, 1, 8, 1, '2015-01-07 06:19:39', '0000-00-00 00:00:00', 'vũ nguyen', 'ha noi', '87878423', 0),
+(17, 1, 8, 1, '2015-01-07 06:22:24', '0000-00-00 00:00:00', 'vũ nguyen', 'ha noi', '87878423', 0),
+(18, 1, 8, 1, '2015-01-07 06:27:29', '0000-00-00 00:00:00', 'vũ nguyen', 'ha noi', '87878423', 0),
+(19, 1, 8, 1, '2015-01-07 06:30:01', '0000-00-00 00:00:00', 'vũ nguyen', 'ha noi', '87878423', 0),
+(20, 1, 8, 1, '2015-01-07 06:32:26', '0000-00-00 00:00:00', 'Nguyen Vu', 'ha noi', '58437584738', 0),
+(21, 1, 8, 1, '2015-01-07 08:32:30', '0000-00-00 00:00:00', 'dsad', 'sadsad', '342432', 0),
+(22, 1, 8, 1, '2015-01-07 08:33:18', '0000-00-00 00:00:00', 'dsad', 'sadsad', '342432', 0),
+(23, 1, 8, 1, '2015-01-07 08:35:22', '0000-00-00 00:00:00', 'dsad', 'đá', 'dsad', 0),
+(24, 1, 8, 1, '2015-01-07 08:40:43', '0000-00-00 00:00:00', 'đá', 'đá', '243234', 0),
+(25, 1, 8, 1, '2015-01-07 08:41:06', '0000-00-00 00:00:00', 'đá', 'đá', '243234', 0),
+(26, 1, 8, 1, '2015-01-07 08:41:32', '0000-00-00 00:00:00', 'đá', 'đá', '243234', 0),
+(27, 1, 8, 1, '2015-01-07 08:52:12', '0000-00-00 00:00:00', 'đá', 'đá', '243234', 0),
+(28, 1, 8, 1, '2015-01-07 08:52:53', '0000-00-00 00:00:00', 'đá', 'đá', '', 0),
+(29, 1, 8, 1, '2015-01-07 08:57:15', '0000-00-00 00:00:00', 'đá', 'đá', '', 0),
+(30, 1, 8, 1, '2015-01-07 08:57:39', '0000-00-00 00:00:00', '4234', '4324', '4234', 0),
+(31, 1, 8, 1, '2015-01-07 08:58:23', '0000-00-00 00:00:00', '4234', '4324', '', 0),
+(32, 1, 8, 1, '2015-01-07 09:24:50', '0000-00-00 00:00:00', 'Vũ Nguyên', 'Hà Nội', '043274832', 0),
+(33, 1, 8, 1, '2015-01-09 10:22:22', '0000-00-00 00:00:00', 'Nam Daan', 'Hà Nội', '984958934', 0),
+(34, 1, 8, 1, '2015-01-09 10:29:03', '0000-00-00 00:00:00', 'nam dân', 'hà nội', '34234', 0),
+(35, 1, 8, 1, '2015-01-09 10:30:19', '0000-00-00 00:00:00', 'nam dân', 'hà nội', '34234', 0),
+(36, 1, 8, 1, '2015-01-09 10:32:53', '0000-00-00 00:00:00', 'gfdg', 'fggd', '42432', 0),
+(37, 1, 8, 1, '2015-01-09 10:33:57', '0000-00-00 00:00:00', 'gfdg', 'fggd', '42432', 0);
 
 -- --------------------------------------------------------
 
@@ -342,9 +428,32 @@ CREATE TABLE IF NOT EXISTS `orderdetail` (
   `ProSizeID` int(10) unsigned NOT NULL,
   `OrdQuantity` int(11) NOT NULL DEFAULT '1',
   `OrdPrice` int(11) NOT NULL,
-  PRIMARY KEY (`OrdID`),
-  KEY `fk_OrderDetail_ProSize1_idx` (`ProSizeID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  PRIMARY KEY (`OrdID`,`ProSizeID`),
+  KEY `fk_OrderDetail_ProSize1_idx` (`ProSizeID`),
+  KEY `fk_OrderDetail_OrdID1_idx` (`OrdID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=38 ;
+
+--
+-- Dumping data for table `orderdetail`
+--
+
+INSERT INTO `orderdetail` (`OrdID`, `ProSizeID`, `OrdQuantity`, `OrdPrice`) VALUES
+(18, 1, 1, 32),
+(20, 1, 1, 4324),
+(21, 1, 1, 4324),
+(22, 1, 1, 4324),
+(23, 1, 1, 4324),
+(24, 1, 1, 4324),
+(25, 1, 1, 4324),
+(26, 1, 1, 4324),
+(27, 1, 1, 4324),
+(28, 1, 1, 4324),
+(29, 1, 1, 4324),
+(30, 1, 1, 4324),
+(31, 1, 1, 4324),
+(32, 1, 1, 4324),
+(37, 1, 1, 100),
+(37, 2, 1, 4324);
 
 -- --------------------------------------------------------
 
@@ -357,7 +466,14 @@ CREATE TABLE IF NOT EXISTS `paymethod` (
   `PayType` varchar(45) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `Cost` int(11) NOT NULL,
   PRIMARY KEY (`PayID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `paymethod`
+--
+
+INSERT INTO `paymethod` (`PayID`, `PayType`, `Cost`) VALUES
+(1, 'Chuyển tiền mặt', 2);
 
 -- --------------------------------------------------------
 
@@ -377,23 +493,56 @@ CREATE TABLE IF NOT EXISTS `product` (
   `ProStt2` int(11) DEFAULT '1',
   PRIMARY KEY (`ProID`),
   KEY `fk_Product_Categories1_idx` (`CateID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=48 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=78 ;
 
 --
 -- Dumping data for table `product`
 --
 
 INSERT INTO `product` (`ProID`, `CateID`, `ProName`, `ProPicName`, `ProPrice`, `ProStt`, `ProQuantity`, `ProDesc`, `ProStt2`) VALUES
-(1, 13, 'Quần bò', 'Images/product12.jpg', 100, 1, 5656, 'Quần b&ograve; nam ch&iacute;nh h&atilde;ng&nbsp;', 1),
-(30, 11, 'sdasd', '', 4324, 1, 34234, 'fsdfds', 1),
-(31, 12, '34234', '', 4234, 1, 4324, 'vcx', 1),
-(32, 12, 'rewr', '', 3213, 1, 3213, 'fdfsf', 1),
-(33, 10, '34', '', 434, 1, 434, '3424', 1),
-(35, 10, '34', '', 434, 1, 434, '3424', 1),
-(39, 11, 'ewr', 'Images/product9.jpg', 432, 1, 23123, '&nbsp; ', 1),
-(42, 11, 'ewr', '', 432, 1, 4324, 'fsdffsdf', 1),
+(1, 12, 'Quần bò', 'Images/product12.jpg', 100, 0, 5656, 'Quần b&ograve; nam ch&iacute;nh h&atilde;ng&nbsp;', 1),
+(30, 12, 'sdasd', 'Images/product1.jpg', 4324, 1, 34234, 'fsdfds', 1),
+(31, 12, '34234', 'Images/product8.jpg', 4234, 0, 4324, 'vcx', 1),
+(32, 12, 'rewr', 'Images/product10.jpg', 3213, 1, 3213, 'fdfsf', 1),
+(33, 12, '34', 'Images/product2.jpg', 434, 0, 434, '3424', 1),
+(35, 12, '34', 'Images/product4.jpg', 434, 1, 434, '3424', 1),
+(39, 12, 'ewr', 'Images/product9.jpg', 432, 1, 23123, '&nbsp; ', 1),
+(42, 12, 'ewr', 'Images/product11.jpg', 432, 1, 4324, 'fsdffsdf', 1),
 (43, 73, 'Áo thun', 'Images/product12.jpg', 300, 1, 2, '&Aacute;o thun mới ', 1),
-(44, 73, 'Áo thun 2', 'Images/product7.jpg', 300, 1, 2, 'm&aacute;y t&iacute;nh b&agrave;n fjhdsjhdf ', 1);
+(44, 73, 'Áo thun 2', 'Images/product7.jpg', 300, 1, 2, 'm&aacute;y t&iacute;nh b&agrave;n fjhdsjhdf ', 1),
+(45, 13, 'ew', 'Images/default.jpg', 200, 1, 200, 'dấd\n<div id="__zsc_once">\n	&nbsp;</div>\n', 1),
+(46, 13, 'ew', 'Images/default.jpg', 200, 1, 200, 'dấd\n<div id="__zsc_once">\n	&nbsp;</div>\n', 1),
+(47, 13, 'ew', 'Images/default.jpg', 200, 1, 1, 'dấd\n<div id="__zsc_once">\n	&nbsp;</div>\n', 1),
+(48, 13, '323', 'Images/default.jpg', 32, 1, 32, '32\n<div id="__zsc_once">\n	&nbsp;</div>\n', 1),
+(49, 13, '323', 'Images/default.jpg', 32, 1, 32, '32\n<div id="__zsc_once">\n	&nbsp;</div>\n', 1),
+(50, 13, '323', 'Images/default.jpg', 32, 0, 32, '32\n<div id="__zsc_once">\n	&nbsp;</div>\n', 1),
+(51, 6, 'hdsahjd', 'Images/default.jpg', 34234, 1, 2, 'rrew\n<div id="__zsc_once">\n	&nbsp;</div>\n', 1),
+(52, 6, 'Nguyên Vũ', 'Images/default.jpg', 34234, 1, 2, 'rrew\n<div id="__zsc_once">\n	&nbsp;</div>\n', 1),
+(53, 9, 'fdsfds', 'Images/default.jpg', 3213, 1, 3231, 'dsadasd\n<div id="__zsc_once">\n	&nbsp;</div>\n', 1),
+(54, 75, 'dsadas', 'Images/default.jpg', 4234, 1, 4234, '4234<br />\n<div id="__zsc_once">\n	&nbsp;</div>\n', 1),
+(55, 75, 'dsadas', 'Images/default.jpg', 4234, 1, 4234, '4234<br />\n<div id="__zsc_once">\n	&nbsp;</div>\n', 1),
+(56, 75, 'dsadas', 'Images/default.jpg', 4234, 1, 4234, '4234<br />\n<div id="__zsc_once">\n	&nbsp;</div>\n', 1),
+(57, 75, 'dsadas', 'Images/default.jpg', 4234, 1, 4234, '4234<br />\n<div id="__zsc_once">\n	&nbsp;</div>\n', 1),
+(58, 10, 'ruewyru', 'Images/default.jpg', 432423, 1, 4324, 'fdsf\n<div id="__zsc_once">\n	&nbsp;</div>\n', 1),
+(59, 13, '32134324', '', 33, 1, 4286, '4324\n<div id="__zsc_once">\n	&nbsp;</div>\n', 1),
+(60, 13, '32134324', '', 33, 1, 4286, '4324\n<div id="__zsc_once">\n	&nbsp;</div>\n', 1),
+(61, 13, '32134324', '', 33, 1, 94, '4324\n<div id="__zsc_once">\n	&nbsp;</div>\n', 1),
+(62, 13, '32134324', '', 33, 1, 94, '4324\n<div id="__zsc_once">\n	&nbsp;</div>\n', 1),
+(63, 13, '32134324', '', 33, 1, 94, '4324\n<div id="__zsc_once">\n	&nbsp;</div>\n', 1),
+(64, 13, '32134324', '', 33, 1, 94, '4324\n<div id="__zsc_once">\n	&nbsp;</div>\n', 1),
+(65, 9, '4234', '', 43, 1, 38, 'rwer\n<div id="__zsc_once">\n	&nbsp;</div>\n', 1),
+(66, 6, '4324', '', 43, 1, 10, 'sd\n<div id="__zsc_once">\n	&nbsp;</div>\n', 1),
+(67, 13, 'rewr', '', 432, 1, 11, 're\n<div id="__zsc_once">\n	&nbsp;</div>\n', 1),
+(68, 13, 'rewr', '', 432, 1, 11, 're\n<div id="__zsc_once">\n	&nbsp;</div>\n', 1),
+(69, 65, 'Quần bò nữ', 'Images/product1.jpg', 300, 1, 2, 'Quần b&ograve; nữ<br />\n<div id="__zsc_once">\n	&nbsp;</div>\n', 1),
+(70, 65, 'Quần zin', '', 340, 1, 5, 'quần\n<div id="__zsc_once">\n	&nbsp;</div>\n', 1),
+(71, 65, 'Áo Thun', '', 200, 1, 9, '&aacute;o\n<div id="__zsc_once">\n	&nbsp;</div>\n', 1),
+(72, 65, 'Áo dạ', '', 300, 1, 2, '&aacute;o\n<div id="__zsc_once">\n	&nbsp;</div>\n', 1),
+(73, 65, 'Áo Dài', '', 300, 1, 4, '&Aacute;o\n<div id="__zsc_once">\n	&nbsp;</div>\n', 1),
+(74, 65, 'Áo Dài', '', 300, 1, 4, '&Aacute;o\n<div id="__zsc_once">\n	&nbsp;</div>\n', 1),
+(75, 11, '3432 fs', '', 23, 1, 3, '321\n<div id="__zsc_once">\n	&nbsp;</div>\n', 1),
+(76, 11, '4234', 'Images/girl1.jpg', 3, 1, 0, '432\n<div id="__zsc_once">\n	&nbsp;</div>\n', 1),
+(77, 65, '3423', 'Images/girl1.jpg', 4, 1, 3, '43244\n<div id="__zsc_once">\n	&nbsp;</div>\n', 1);
 
 -- --------------------------------------------------------
 
@@ -410,7 +559,35 @@ CREATE TABLE IF NOT EXISTS `prosize` (
   PRIMARY KEY (`ProSizeID`),
   KEY `fk_ProSize_Size_idx` (`SizeID`),
   KEY `fk_ProSize_Product1_idx` (`ProID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=27 ;
+
+--
+-- Dumping data for table `prosize`
+--
+
+INSERT INTO `prosize` (`ProSizeID`, `SizeID`, `ProID`, `Quantity`, `Discount`) VALUES
+(1, 2, 39, 23, 223),
+(2, 2, 65, 2, 0),
+(7, 3, 65, 32, 0),
+(8, 4, 65, 3, 0),
+(9, 5, 65, 1, 0),
+(10, 2, 68, 2, 0),
+(11, 3, 68, 4, 0),
+(12, 4, 68, 5, 0),
+(13, 2, 69, 2, 0),
+(14, 3, 70, 5, 0),
+(15, 2, 71, 2, 0),
+(16, 3, 71, 2, 0),
+(17, 4, 71, 5, 0),
+(18, 2, 72, 2, 0),
+(19, 2, 73, 1, 0),
+(20, 3, 73, 1, 0),
+(21, 4, 73, 2, 0),
+(22, 2, 74, 1, 0),
+(23, 3, 74, 1, 0),
+(24, 4, 74, 2, 0),
+(25, 2, 75, 3, 0),
+(26, 2, 77, 3, 0);
 
 -- --------------------------------------------------------
 
@@ -440,7 +617,17 @@ CREATE TABLE IF NOT EXISTS `size` (
   `SizeID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `SizeName` varchar(45) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`SizeID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+
+--
+-- Dumping data for table `size`
+--
+
+INSERT INTO `size` (`SizeID`, `SizeName`) VALUES
+(2, '29'),
+(3, 'XXL'),
+(4, 'XX'),
+(5, 'L');
 
 -- --------------------------------------------------------
 
@@ -456,7 +643,14 @@ CREATE TABLE IF NOT EXISTS `slide` (
   `SlidePicName` varchar(255) NOT NULL,
   `SlideStt` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`SlideID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `slide`
+--
+
+INSERT INTO `slide` (`SlideID`, `SlideTitle`, `SlideDate`, `SlideContent`, `SlidePicName`, `SlideStt`) VALUES
+(1, 'new', '2015-01-06', 'nwq\n<div id="__zsc_once">\n	&nbsp;</div>\n', 'Images/girl3.jpg', 1);
 
 --
 -- Constraints for dumped tables
@@ -500,6 +694,7 @@ ALTER TABLE `order`
 -- Constraints for table `orderdetail`
 --
 ALTER TABLE `orderdetail`
+  ADD CONSTRAINT `fk_OrderDetail_OrdID1_idx` FOREIGN KEY (`OrdID`) REFERENCES `order` (`OrdID`) ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_OrderDetail_ProSize1` FOREIGN KEY (`ProSizeID`) REFERENCES `prosize` (`ProSizeID`) ON UPDATE NO ACTION;
 
 --
