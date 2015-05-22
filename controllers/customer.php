@@ -81,7 +81,7 @@ class customer extends Backend_Controller {
 			}
 		} else {
 			$data = array ();
-			$this->template->add_title ( 'Tạo tài khoản người dùng' );
+			$this->template->add_title ( 'Tạo tài khoản người dùng   ' );
 			$this->template->write ( 'title', 'Tạo tài khoản người dùng' );
 			$this->template->write ( 'desption', 'Tạo tài khoản người dùng' ); 
 			$this->template->write_view ( 'content', 'customer/customer_create', $data, true );
